@@ -1,11 +1,13 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
+import 'package:shifts_management/features/%20Profile%20Screen/Profile_Screen.dart';
 
 class OtpScreen extends StatelessWidget {
-  OtpScreen({super.key, this.value = "03001234567"});
+  const OtpScreen({super.key, this.value = "03001234567"});
 
   final String value;
 
@@ -34,7 +36,7 @@ class OtpScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () => Flexify.back(),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -84,34 +86,56 @@ class OtpScreen extends StatelessWidget {
                                   crossAxisCount: 4),
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 8),
+                              padding: const EdgeInsets.only(right: 8),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                    border: Border.fromBorderSide(BorderSide(color: Colors.grey.withOpacity(0.2))),
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.fromBorderSide(BorderSide(
+                                        color: Colors.grey.withOpacity(0.2))),
                                     boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.shade500.withOpacity(0.1),
-                                      spreadRadius: 2,
-                                      blurRadius: 5,
-                                      offset: Offset(3, 2))
-                                ]),
-
+                                      BoxShadow(
+                                          color: Colors.grey.shade500
+                                              .withOpacity(0.1),
+                                          spreadRadius: 2,
+                                          blurRadius: 5,
+                                          offset: Offset(3, 2))
+                                    ]),
                                 child: Center(child: Text("0")),
                               ),
                             );
                           },
                         ),
                       ),
-                      const SizedBox(height: 20,),
-                      CustomButton(btnColor: Palate.primaryColor, onTap: (){},btnName: "Verify",)
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomButton(
+                        btnColor: Palate.primaryColor,
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              PageTransition(
+                                  child: ProfileScreen(),
+                                  type: PageTransitionType.bottomToTop));
+                        },
+                        btnName: "Verify",
+                      )
                     ],
                   )),
-              const SizedBox(height: 15,),
-              Text("Resend",style: TextStyle(color: Palate.primaryColor,decoration: TextDecoration.underline,)),
-              const SizedBox(height: 50,),
-              CircularProgressIndicator(color: Palate.primaryColor,)
+              const SizedBox(
+                height: 15,
+              ),
+              Text("Resend",
+                  style: TextStyle(
+                    color: Palate.primaryColor,
+                    decoration: TextDecoration.underline,
+                  )),
+              const SizedBox(
+                height: 50,
+              ),
+              CircularProgressIndicator(
+                color: Palate.primaryColor,
+              )
             ],
           ),
         ),

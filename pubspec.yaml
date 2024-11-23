@@ -39,6 +39,7 @@ dependencies:
   flutter_svg: ^2.0.15
   smooth_page_indicator: ^1.2.0+3
   get: ^4.6.6
+  page_transition: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -6,11 +6,12 @@ class CustomTextfield extends StatelessWidget {
       {super.key,
       required this.labelText,
       required this.controller,
-      this.isHidden = false});
+      this.isHidden = false, this.suffixText = ""});
 
   final String labelText;
   final TextEditingController controller;
   final bool isHidden;
+  final String suffixText;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,8 @@ class CustomTextfield extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.w400),
             decoration: InputDecoration(
+              suffixText: suffixText,
+              suffixStyle: TextStyle(color: Colors.green,fontSize: 12),
               border: InputBorder.none,
               labelStyle: TextStyle(color: Palate.labelColor),
               labelText: labelText,

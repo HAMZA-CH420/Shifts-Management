@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
-import 'package:shifts_management/features/Splash%20Screens/2nd_Splash_Screen.dart';
+import 'package:shifts_management/features/IntroScreens/Splash%20Screens/2nd_Splash_Screen.dart';
+
 
 class FirstSplashScreen extends StatefulWidget {
   const FirstSplashScreen({super.key});

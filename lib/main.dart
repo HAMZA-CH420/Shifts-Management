@@ -1,7 +1,8 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/App_Theme.dart';
-import 'package:shifts_management/features/Splash%20Screens/1st_Splash_Screen.dart';
+import 'package:shifts_management/features/%20Profile%20Screen/Profile_Screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Shifts Management',
         theme: AppTheme.lightTheme,
-        home: FirstSplashScreen(),
+        home: ProfileScreen(),
       ),
     );
   }
