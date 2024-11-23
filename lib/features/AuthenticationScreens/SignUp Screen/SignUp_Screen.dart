@@ -4,9 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
-import 'package:shifts_management/features/Login%20Screen/Login_Screen.dart';
-import 'package:shifts_management/features/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
-
+import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
+import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
 class SignupScreen extends StatefulWidget {
   SignupScreen({super.key});
 

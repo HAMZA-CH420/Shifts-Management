@@ -1,8 +1,8 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
 import 'package:shifts_management/features/IntroScreens/Introduction%20Screens/Helpers/Intro_items_info.dart';
-import 'package:shifts_management/features/Login%20Screen/Login_Screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class IntroScreensItems extends StatefulWidget {

@@ -4,7 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
-import 'package:shifts_management/features/SignUp%20Screen/SignUp_Screen.dart';
+import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/SignUp_Screen.dart';
+import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -70,25 +71,39 @@ class LoginScreen extends StatelessWidget {
                 height: 23,
               ),
               CustomButton(
-                onTap: (){},
+                onTap: () {},
                 btnName: "Login",
                 btnColor: Palate.primaryColor,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Text("or",style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),),
+                child: Text(
+                  "or",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                ),
               ),
-              CustomButton(onTap: (){},btnColor: Colors.transparent,btnname: Row(mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset("assets/images/google.svg",),
-                  const SizedBox(width: 10,),
-                  Text("Continue with Google",
-                      style: TextStyle(
-                          color: Palate.primaryColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w400)),
-                ],
-              ),).outlinedBtn()
+              CustomButton(
+                onTap: () => Flexify.go(ChatHomeScreen(),
+                    animation: FlexifyRouteAnimations.slide,
+                    animationDuration: Duration(milliseconds: 200)),
+                btnColor: Colors.transparent,
+                btnname: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(
+                      "assets/images/google.svg",
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text("Continue with Google",
+                        style: TextStyle(
+                            color: Palate.primaryColor,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400)),
+                  ],
+                ),
+              ).outlinedBtn()
             ],
           ),
         ),
