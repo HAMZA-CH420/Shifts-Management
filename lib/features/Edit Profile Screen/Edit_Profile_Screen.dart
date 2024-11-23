@@ -4,10 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
+import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 
-class ProfileScreen extends StatelessWidget {
-  ProfileScreen({
+class EditProfileScreen extends StatelessWidget {
+  EditProfileScreen({
     super.key,
   });
 
@@ -90,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               CustomButton(
                 btnColor: Palate.primaryColor,
-                onTap: () => Flexify.go(ChatHomeScreen(),
+                onTap: () => Flexify.go(BottomNavbar(),
                     animation: FlexifyRouteAnimations.slide,
                     animationDuration: Duration(milliseconds: 300)),
                 btnName: "update",

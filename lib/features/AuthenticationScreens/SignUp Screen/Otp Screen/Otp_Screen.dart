@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
-import 'package:shifts_management/features/%20Profile%20Screen/Profile_Screen.dart';
+import 'package:shifts_management/features/Edit%20Profile%20Screen/Edit_Profile_Screen.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key, this.value = "03001234567"});
@@ -115,7 +115,7 @@ class OtpScreen extends StatelessWidget {
                           Navigator.push(
                               context,
                               PageTransition(
-                                  child: ProfileScreen(),
+                                  child: EditProfileScreen(),
                                   type: PageTransitionType.bottomToTop));
                         },
                         btnName: "Verify",

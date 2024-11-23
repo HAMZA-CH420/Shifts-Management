@@ -10,8 +10,12 @@ class Model {
       inactiveIcon: ImageIcon(AssetImage("assets/icons/inactive_chat.png"))
     ),
     PersistentBottomNavBarItem(
-      icon: Icon(Icons.description_outlined),
-      inactiveIcon: Icon(Icons.add),
+      icon: ImageIcon(AssetImage("assets/icons/shift_active.png")),
+      inactiveIcon: ImageIcon(AssetImage("assets/icons/shift_inactive.png")),
+    ),
+    PersistentBottomNavBarItem(
+      icon: ImageIcon(AssetImage("assets/icons/profile_active.png")),
+      inactiveIcon: ImageIcon(AssetImage("assets/icons/profile_inactive.png")),
     ),
   ];
 }
