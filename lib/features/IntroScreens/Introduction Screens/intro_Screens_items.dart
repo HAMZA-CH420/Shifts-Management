@@ -34,7 +34,6 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
           image: Image.asset("assets/images/intro_image_3.png")),
     ];
     return Scaffold(
-      backgroundColor: Color(0xffF4F4F4),
       body: PageView.builder(
         onPageChanged: (index) {
           isLastPage = Items.length - 1 == index;

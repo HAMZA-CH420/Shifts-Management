@@ -5,6 +5,7 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/SignUp_Screen.dart';
+import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -57,7 +58,7 @@ class LoginScreen extends StatelessWidget {
                     InkWell(
                         onTap: () => Flexify.go(SignupScreen(),
                             animation: FlexifyRouteAnimations.fade,
-                            animationDuration: Duration(milliseconds: 200)),
+                            animationDuration: Duration(milliseconds: 300)),
                         child: Text(
                           "SignUp",
                           style: TextStyle(
@@ -71,7 +72,9 @@ class LoginScreen extends StatelessWidget {
                 height: 23,
               ),
               CustomButton(
-                onTap: () {},
+                onTap: () =>Flexify.go(BottomNavbar(),
+                    animation: FlexifyRouteAnimations.slide,
+                    animationDuration: Duration(milliseconds: 200)),
                 btnName: "Login",
                 btnColor: Palate.primaryColor,
               ),
@@ -83,9 +86,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               CustomButton(
-                onTap: () => Flexify.go(ChatHomeScreen(),
-                    animation: FlexifyRouteAnimations.slide,
-                    animationDuration: Duration(milliseconds: 200)),
+                onTap: () {},
                 btnColor: Colors.transparent,
                 btnname: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
