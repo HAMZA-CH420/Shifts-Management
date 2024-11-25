@@ -6,7 +6,5 @@ class AppTheme {
     bottomSheetTheme: BottomSheetThemeData(
       shadowColor: Colors.transparent,
       backgroundColor: Colors.transparent,
-
-    ),
-  );
+    ),);
 }

@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
-class ChatHomeScreen extends StatelessWidget {
+class ChatHomeScreen extends StatefulWidget {
  const ChatHomeScreen({super.key});
 
+  @override
+  State<ChatHomeScreen> createState() => _ChatHomeScreenState();
+}
+
+class _ChatHomeScreenState extends State<ChatHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,7 +33,8 @@ class ChatHomeScreen extends StatelessWidget {
           ),
          body: TabBarView(
              children: [
-
+               Container(color: Palate.primaryColor,),
+               Container(color: Colors.green,),
              ]),
     ),);
   }

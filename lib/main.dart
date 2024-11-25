@@ -1,6 +1,7 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/App_Theme.dart';
+import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 import 'package:shifts_management/features/IntroScreens/Splash%20Screens/1st_Splash_Screen.dart';
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Shifts Management',
         theme: AppTheme.lightTheme,
-        home: ChatHomeScreen(),
+        home: FirstSplashScreen(),
       ),
     );
   }

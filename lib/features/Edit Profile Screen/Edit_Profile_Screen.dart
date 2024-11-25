@@ -1,6 +1,7 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
@@ -91,9 +92,13 @@ class EditProfileScreen extends StatelessWidget {
               ),
               CustomButton(
                 btnColor: Palate.primaryColor,
-                onTap: () => Flexify.go(BottomNavbar(),
-                    animation: FlexifyRouteAnimations.slide,
-                    animationDuration: Duration(milliseconds: 300)),
+                onTap: () { Navigator.pushReplacement(
+                  context,
+                  PageTransition(
+                      child: ChatHomeScreen(),
+                      curve: Curves.elasticOut,
+                      type: PageTransitionType.bottomToTop,duration: Duration(milliseconds: 500)),
+                );},
                 btnName: "update",
               )
             ],
