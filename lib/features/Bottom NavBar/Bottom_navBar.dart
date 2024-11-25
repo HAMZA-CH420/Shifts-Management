@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:shifts_management/features/Bottom%20NavBar/Model.dart';
-import 'package:shifts_management/features/Edit%20Profile%20Screen/Edit_Profile_Screen.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
+import 'package:shifts_management/features/Profile_Screen/Profile_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/Shifts_Screen.dart';
 
 class BottomNavbar extends StatelessWidget {
@@ -12,7 +12,7 @@ class BottomNavbar extends StatelessWidget {
   final List<Widget> _screens = [
     ChatHomeScreen(),
     ShiftsScreen(),
-    EditProfileScreen(),
+    ProfileScreen()
   ];
 
   @override

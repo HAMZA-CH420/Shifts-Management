@@ -55,7 +55,7 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
                   Items[index].title,
                   style: const TextStyle(
                     fontSize: 28,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w300,
                   ),
                 ),
                 Padding(
