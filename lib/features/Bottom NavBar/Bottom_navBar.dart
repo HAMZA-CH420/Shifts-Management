@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 import 'package:shifts_management/features/Profile_Screen/Profile_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/Shifts_Screen.dart';
@@ -14,24 +15,24 @@ class _BottomNavbarState extends State<BottomNavbar> {
   int _currentIndex = 0;
   final List<ImageIcon> _icons = <ImageIcon>[
     const ImageIcon(
-      AssetImage("assets/active_chat.png"),
+      AssetImage("assets/icons/active_chat.png"),
     ),
     const ImageIcon(
-      AssetImage("assets/shift_active.png"),
+      AssetImage("assets/icons/shift_active.png"),
     ),
     const ImageIcon(
-      AssetImage("assets/profile_active.png"),
+      AssetImage("assets/icons/profile_active.png"),
     ),
   ];
   final List<ImageIcon> _selectedIcons = <ImageIcon>[
     const ImageIcon(
-      AssetImage("assets/inactive_chat.png"),
+      AssetImage("assets/icons/inactive_chat.png"),
     ),
     const ImageIcon(
-      AssetImage("assets/shift_inactive.png"),
+      AssetImage("assets/icons/shift_inactive.png"),
     ),
     const ImageIcon(
-      AssetImage("assets/profile_inactive.png"),
+      AssetImage("assets/icons/profile_inactive.png"),
     ),
   ];
   final List<Widget> _screens = [
@@ -47,8 +48,12 @@ class _BottomNavbarState extends State<BottomNavbar> {
         index: _currentIndex,
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Palate.primaryColor,
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Palate.navBarColor,
+        ),
         shape: const CircleBorder(),
       ),
       appBar: AppBar(
@@ -64,9 +69,9 @@ class _BottomNavbarState extends State<BottomNavbar> {
       padding: EdgeInsets.all(0),
       shadowColor: Colors.transparent,
       height: 70,
-      color: Colors.blue.shade200,
+      color: Palate.navBarColor,
       shape: const CircularNotchedRectangle(),
-      notchMargin: 10.0,
+      notchMargin: 8.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: _bottomIcons(),
@@ -83,7 +88,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(5),
-              color: _currentIndex == i ? Colors.blue : Colors.transparent,
+              color:
+                  _currentIndex == i ? Palate.primaryColor : Colors.transparent,
             ),
             height: 5,
             width: 33,
@@ -92,7 +98,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
             height: 60,
             width: 90,
             child: IconButton(
-                color: Colors.blue,
+                color: Palate.primaryColor,
                 onPressed: () {
                   setState(() {
                     _currentIndex = i;
