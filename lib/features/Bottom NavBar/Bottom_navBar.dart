@@ -1,36 +1,108 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:shifts_management/features/Bottom%20NavBar/Model.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 import 'package:shifts_management/features/Profile_Screen/Profile_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/Shifts_Screen.dart';
 
-class BottomNavbar extends StatelessWidget {
+class BottomNavbar extends StatefulWidget {
   BottomNavbar({super.key});
 
-  final _controller = PersistentTabController(initialIndex: 0);
-  final List<Widget> _screens = [
-    ChatHomeScreen(),
-    ShiftsScreen(),
-    ProfileScreen()
-  ];
+  @override
+  State<BottomNavbar> createState() => _BottomNavbarState();
+}
 
+class _BottomNavbarState extends State<BottomNavbar> {
+  int _currentIndex = 0;
+  final List<ImageIcon> _icons = <ImageIcon>[
+    const ImageIcon(
+      AssetImage("assets/active_chat.png"),
+    ),
+    const ImageIcon(
+      AssetImage("assets/shift_active.png"),
+    ),
+    const ImageIcon(
+      AssetImage("assets/profile_active.png"),
+    ),
+  ];
+  final List<ImageIcon> _selectedIcons = <ImageIcon>[
+    const ImageIcon(
+      AssetImage("assets/inactive_chat.png"),
+    ),
+    const ImageIcon(
+      AssetImage("assets/shift_inactive.png"),
+    ),
+    const ImageIcon(
+      AssetImage("assets/profile_inactive.png"),
+    ),
+  ];
+  final List<Widget> _screens = [
+    const ChatHomeScreen(),
+    const ShiftsScreen(),
+    const ProfileScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
-    return PersistentTabView(
-      backgroundColor: Color(0XFFD2E4FF),
-      animationSettings: NavBarAnimationSettings(
-        screenTransitionAnimation: ScreenTransitionAnimationSettings(
-          duration: Duration(milliseconds: 300),
-          animateTabTransition: true,
-          screenTransitionAnimationType: ScreenTransitionAnimationType.slide
-        ),
+    return Scaffold(
+      body: IndexedStack(
+        children: _screens,
+        index: _currentIndex,
       ),
-      context,
-      controller: _controller,
-      navBarHeight: 60,
-      screens: _screens,
-      items: Model.Items,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        shape: const CircleBorder(),
+      ),
+      appBar: AppBar(
+        title: const Text("Custom Navbar"),
+        centerTitle: true,
+      ),
+      bottomSheet: _buildBottomBar(),
     );
+  }
+
+  Widget _buildBottomBar() {
+    return BottomAppBar(
+      padding: EdgeInsets.all(0),
+      shadowColor: Colors.transparent,
+      height: 70,
+      color: Colors.blue.shade200,
+      shape: const CircularNotchedRectangle(),
+      notchMargin: 10.0,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: _bottomIcons(),
+      ),
+    );
+  }
+
+  List<Widget> _bottomIcons() {
+    List<Widget> icons = [];
+    for (int i = 0; i < _icons.length; i++) {
+      icons.add(Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: _currentIndex == i ? Colors.blue : Colors.transparent,
+            ),
+            height: 5,
+            width: 33,
+          ),
+          Container(
+            height: 60,
+            width: 90,
+            child: IconButton(
+                color: Colors.blue,
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = i;
+                  });
+                },
+                icon: _currentIndex == i ? _icons[i] : _selectedIcons[i]),
+          )
+        ],
+      ));
+    }
+    return icons;
   }
 }
