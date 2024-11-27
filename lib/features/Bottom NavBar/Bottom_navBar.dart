@@ -11,7 +11,27 @@ class BottomNavbar extends StatefulWidget {
   State<BottomNavbar> createState() => _BottomNavbarState();
 }
 
-class _BottomNavbarState extends State<BottomNavbar> {
+class _BottomNavbarState extends State<BottomNavbar>
+    with TickerProviderStateMixin {
+  List<AnimationController> _animationControllers = [];
+  List<Animation<double>> _animations = [];
+
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < _icons.length; i++) {
+      AnimationController controller = AnimationController(
+        duration: Duration(milliseconds: 200),
+        vsync: this,
+      );
+      controller.value = 0;
+      _animationControllers.add(controller);
+      _animations.add(
+        Tween<double>(begin: 0, end: 33).animate(controller),
+      );
+    }
+  }
+
   int _currentIndex = 0;
   final List<ImageIcon> _icons = <ImageIcon>[
     const ImageIcon(
@@ -40,6 +60,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
     const ShiftsScreen(),
     const ProfileScreen(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,17 +77,13 @@ class _BottomNavbarState extends State<BottomNavbar> {
         ),
         shape: const CircleBorder(),
       ),
-      appBar: AppBar(
-        title: const Text("Custom Navbar"),
-        centerTitle: true,
-      ),
       bottomSheet: _buildBottomBar(),
     );
   }
 
   Widget _buildBottomBar() {
     return BottomAppBar(
-      padding: EdgeInsets.all(0),
+      padding: EdgeInsets.only(left: 5),
       shadowColor: Colors.transparent,
       height: 70,
       color: Palate.navBarColor,
@@ -85,14 +102,20 @@ class _BottomNavbarState extends State<BottomNavbar> {
       icons.add(Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color:
-                  _currentIndex == i ? Palate.primaryColor : Colors.transparent,
-            ),
-            height: 5,
-            width: 33,
+          AnimatedBuilder(
+            animation: _animations[i],
+            builder: (context, child) {
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: _currentIndex == i
+                      ? Palate.primaryColor
+                      : Colors.transparent,
+                ),
+                height: 5,
+                width: _animations[i].value,
+              );
+            },
           ),
           Container(
             height: 60,
@@ -102,6 +125,13 @@ class _BottomNavbarState extends State<BottomNavbar> {
                 onPressed: () {
                   setState(() {
                     _currentIndex = i;
+                    for (int j = i; j < _icons.length; j++) {
+                      if (j == i) {
+                        _animationControllers[j].forward(from: 0);
+                      } else {
+                        _animationControllers[j].reverse(from: 1);
+                      }
+                    }
                   });
                 },
                 icon: _currentIndex == i ? _icons[i] : _selectedIcons[i]),
