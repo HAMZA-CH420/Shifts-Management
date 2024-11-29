@@ -1,6 +1,7 @@
 import 'package:flexify/flexify.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Banner.dart';
@@ -28,50 +29,67 @@ class ProfileScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(left: 12),
         child: Center(
-            child: Column(
-          children: [
-            Image.asset("assets/images/Avatar.png"),
-            const SizedBox(
-              height: 10,
-            ),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  CustomBanner(
-                    bannerTitle: "General",
-                  ),
-                  CustomProfileBanner(
-                    onTap: () {},
-                    bannerTitle: "Shift",
-                    icon: Icons.watch_later_rounded,
-                  ),
-                  Divider(
-                    color: Palate.dividerColor,
-                  ),
-                  CustomProfileBanner(
-                    icon: Icons.person,
-                    bannerTitle: "Account",
-                    onTap: () {},
-                  ),
-                  Divider(
-                    color: Palate.dividerColor,
-                  ),
-                  CustomProfileBanner(
-                    icon: Icons.notifications,
-                    bannerTitle: "Notification",
-                    onTap: () {},
-                  ),
-                  CustomBanner(bannerTitle: "Content"),
-                  CustomProfileBanner(
-                      icon: CupertinoIcons.heart_fill,
-                      bannerTitle: "My Planner",
-                      onTap: () {})
-                ],
+            child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.asset("assets/images/Avatar.png"),
+              const SizedBox(
+                height: 10,
               ),
-            ),
-          ],
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    CustomBanner(
+                      bannerTitle: "General",
+                    ),
+                    CustomProfileBanner(
+                      onTap: () {},
+                      bannerTitle: "Shift",
+                      icon: Icons.watch_later_rounded,
+                    ),
+                    Divider(
+                      color: Palate.dividerColor,
+                    ),
+                    CustomProfileBanner(
+                      icon: Icons.person,
+                      bannerTitle: "Account",
+                      onTap: () {},
+                    ),
+                    Divider(
+                      color: Palate.dividerColor,
+                    ),
+                    CustomProfileBanner(
+                      icon: Icons.notifications,
+                      bannerTitle: "Notification",
+                      onTap: () {},
+                    ),
+                    CustomBanner(bannerTitle: "Content"),
+                    CustomProfileBanner(
+                        icon: CupertinoIcons.heart_fill,
+                        bannerTitle: "My Planner",
+                        onTap: () {}),
+                    Divider(
+                      color: Palate.dividerColor,
+                    ),
+                    CustomProfileBanner(
+                        icon: Icons.calendar_month_rounded,
+                        bannerTitle: "Schedule Shift",
+                        onTap: () {}),
+                    CustomBanner(bannerTitle: "Preferences"),
+                    CustomProfileBanner(
+                        icon: FontAwesomeIcons.language,
+                        bannerTitle: "Language",
+                        onTap: () {}),
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
         )),
       ),
     );

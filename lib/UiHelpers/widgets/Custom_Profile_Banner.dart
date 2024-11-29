@@ -34,7 +34,7 @@ class CustomProfileBanner extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 13),
             child: SizedBox(
-              width: 87,
+              width: 133,
               child: Text(
                 bannerTitle,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -42,7 +42,7 @@ class CustomProfileBanner extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 148,
+            width: 114,
           ),
           IconButton(
               onPressed: onTap,

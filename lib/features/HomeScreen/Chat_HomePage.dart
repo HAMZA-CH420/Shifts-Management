@@ -21,7 +21,7 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
           actions: [
             const Icon(
               Iconsax.notification,
-              size: 30,
+              size: 25,
               color: Palate.PrimaryTextColor,
             ),
             const SizedBox(
