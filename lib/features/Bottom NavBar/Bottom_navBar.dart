@@ -6,7 +6,6 @@ import 'package:shifts_management/features/ShiftScreen/Shifts_Screen.dart';
 
 class BottomNavbar extends StatefulWidget {
   BottomNavbar({super.key});
-
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
 }

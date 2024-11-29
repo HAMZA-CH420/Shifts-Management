@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "264427027823",
+    "project_id": "shifts-managements",
+    "storage_bucket": "shifts-managements.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:264427027823:android:9606af0908bd0a10bd3c9a",
+        "android_client_info": {
+          "package_name": "com.example.shifts_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpYLErZKakpwljNi7u_J8_OeKxIHLPYTI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

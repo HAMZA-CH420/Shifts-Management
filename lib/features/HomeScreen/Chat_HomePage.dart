@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_SearchBar.dart';
@@ -25,7 +24,7 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
               size: 30,
               color: Palate.PrimaryTextColor,
             ),
-           const  SizedBox(
+            const SizedBox(
               width: 11,
             ),
           ],
@@ -78,5 +77,4 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
       ),
     );
   }
-
 }

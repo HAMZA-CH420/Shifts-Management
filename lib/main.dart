@@ -1,11 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/App_Theme.dart';
-import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
 import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
-import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
-import 'package:shifts_management/features/IntroScreens/Splash%20Screens/1st_Splash_Screen.dart';
-void main() {
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return Flexify(
       designHeight: 375,
       designWidth: 812,
-      app:  MaterialApp(
+      app: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Shifts Management',
         theme: AppTheme.lightTheme,
