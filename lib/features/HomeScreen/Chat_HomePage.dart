@@ -68,10 +68,10 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
         ),
         body: TabBarView(children: [
           Container(
-            child: Center(child: Text("Chats")),
+            child: const Center(child: Text("Chats")),
           ),
           Container(
-            child: Center(child: Text("Groups")),
+            child: const Center(child: Text("Groups")),
           ),
         ]),
       ),
