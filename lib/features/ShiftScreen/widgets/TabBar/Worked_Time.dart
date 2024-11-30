@@ -27,7 +27,7 @@ class WorkedTime extends StatelessWidget {
                         color: Palate.primaryColor)),
                 Text(
                   "35",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 30, color: Palate.shiftTextColor),
                 )
               ],
             ),
@@ -48,7 +48,7 @@ class WorkedTime extends StatelessWidget {
                         color: Palate.primaryColor)),
                 Text(
                   "04",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 30, color: Palate.shiftTextColor),
                 )
               ],
             ),
