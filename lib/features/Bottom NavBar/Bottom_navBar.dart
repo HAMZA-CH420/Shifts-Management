@@ -67,10 +67,13 @@ class _BottomNavbarState extends State<BottomNavbar>
         children: _screens,
         index: _currentIndex,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
+        elevation: 0,
         backgroundColor: Palate.primaryColor,
         onPressed: () {},
         child: Icon(
+          size: 30,
           Icons.add,
           color: Palate.navBarColor,
         ),
