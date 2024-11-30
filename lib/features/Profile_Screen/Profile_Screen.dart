@@ -82,10 +82,16 @@ class ProfileScreen extends StatelessWidget {
                         icon: FontAwesomeIcons.language,
                         bannerTitle: "Language",
                         onTap: () {}),
+                    Divider(
+                      color: Palate.dividerColor,
+                    ),
                     CustomProfileBanner(
                         icon: Icons.dark_mode,
                         bannerTitle: "Dark Mode",
                         onTap: () {}),
+                    Divider(
+                      color: Palate.dividerColor,
+                    ),
                     CustomProfileBanner(
                         icon: Icons.edit_note_outlined,
                         bannerTitle: "Shift Edit",
