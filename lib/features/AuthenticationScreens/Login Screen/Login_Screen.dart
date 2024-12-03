@@ -7,7 +7,6 @@ import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/SignUp_Screen.dart';
 import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
-import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -77,9 +76,10 @@ class LoginScreen extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     PageTransition(
-                        child: ChatHomeScreen(),
+                        child: BottomNavbar(),
                         curve: Curves.elasticOut,
-                        type: PageTransitionType.bottomToTop,duration: Duration(milliseconds: 500)),
+                        type: PageTransitionType.bottomToTop,
+                        duration: Duration(milliseconds: 500)),
                   );
                 },
                 btnName: "Login",

@@ -1,4 +1,3 @@
-import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
@@ -110,10 +109,14 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
                                 curve: Curves.easeInOut),
                             child: Text(
                               "Next",
-                              style:
-                                  TextStyle(color: Color(0XFF00629D), fontSize: 18),
+                              style: TextStyle(
+                                  color: Color(0XFF00629D), fontSize: 18),
                             )),
-                        Icon(Icons.arrow_forward_ios_sharp,size: 19,color: Color(0XFF00629D),)
+                        Icon(
+                          Icons.arrow_forward_ios_sharp,
+                          size: 19,
+                          color: Color(0XFF00629D),
+                        )
                       ],
                     ),
                   ],
@@ -129,17 +132,18 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color:Palate.primaryColor,
+          color: Palate.primaryColor,
         ),
         height: 50,
         width: 300,
         child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
+                backgroundColor: Colors.transparent,
                 shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder()),
             onPressed: () {
-              Flexify.go(LoginScreen());
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()));
             },
             child: Text(
               "Get Started",

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/IntroScreens/Introduction%20Screens/intro_Screens_items.dart';
 
@@ -16,11 +16,15 @@ class SecondSplashScreen extends StatefulWidget {
 class _SecondSplashScreenState extends State<SecondSplashScreen> {
   @override
   void initState() {
-    Timer(
-        Duration(seconds: 2),
-        () => Flexify.go(IntroScreensItems(),
-            animation: FlexifyRouteAnimations.fade,
-            animationDuration: Duration(seconds: 1)));
+    Timer(Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+          context,
+          PageTransition(
+            child: IntroScreensItems(),
+            duration: Duration(seconds: 1),
+            type: PageTransitionType.fade,
+          ));
+    });
     super.initState();
   }
 
@@ -29,7 +33,7 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
     return Scaffold(
       backgroundColor: Palate.primaryColor,
       body: Center(
-        child:  Container(
+        child: Container(
           width: 150,
           height: 150,
           child: SvgPicture.asset(

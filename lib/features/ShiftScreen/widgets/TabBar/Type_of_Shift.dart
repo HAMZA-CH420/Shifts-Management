@@ -9,7 +9,11 @@ class TypeOfShift extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomShiftIcon(icon: ImageIcon(AssetImage("assets/icons/Type.png"))),
+        CustomShiftIcon(
+            icon: ImageIcon(
+          AssetImage("assets/icons/Type.png"),
+          color: Palate.primaryColor,
+        )),
         Text(
           "Plumber",
           style: TextStyle(
