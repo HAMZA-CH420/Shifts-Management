@@ -85,7 +85,7 @@ class _BottomNavbarState extends State<BottomNavbar>
 
   Widget _buildBottomBar() {
     return BottomAppBar(
-      padding: EdgeInsets.only(left: 5),
+      padding: EdgeInsets.only(left: 8),
       shadowColor: Colors.transparent,
       height: 70,
       color: Palate.navBarColor,

@@ -6,7 +6,6 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
-import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 
 class EditProfileScreen extends StatelessWidget {
   EditProfileScreen({
@@ -92,13 +91,16 @@ class EditProfileScreen extends StatelessWidget {
               ),
               CustomButton(
                 btnColor: Palate.primaryColor,
-                onTap: () { Navigator.pushReplacement(
-                  context,
-                  PageTransition(
-                      child: ChatHomeScreen(),
-                      curve: Curves.elasticOut,
-                      type: PageTransitionType.bottomToTop,duration: Duration(milliseconds: 500)),
-                );},
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                        child: BottomNavbar(),
+                        curve: Curves.elasticOut,
+                        type: PageTransitionType.bottomToTop,
+                        duration: Duration(milliseconds: 500)),
+                  );
+                },
                 btnName: "update",
               )
             ],

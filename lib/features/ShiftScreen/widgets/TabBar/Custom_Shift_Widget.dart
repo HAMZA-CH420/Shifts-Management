@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Date_of_Shift.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Hours_and_Time_of_Shift.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Location_Of_Shift.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Status_of_Shift.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Type_of_Shift.dart';
 
 class CustomShiftWidget extends StatelessWidget {
@@ -18,7 +19,7 @@ class CustomShiftWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 DateOfShift(),
@@ -29,12 +30,21 @@ class CustomShiftWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 CircleAvatar(child: Image.asset("assets/images/Dp.png")),
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     LocationOfShift(),
-                    TypeOfShift(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TypeOfShift(),
+                        SizedBox(
+                          width: 80,
+                        ),
+                        StatusOfShift(),
+                      ],
+                    ),
                   ],
                 ),
               ],
