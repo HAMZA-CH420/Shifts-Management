@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Date_of_Shift.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Hours_and_Time_of_Shift.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Location_Of_Shift.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Status_of_Shift.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Type_of_Shift.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Date_of_Shift.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Hours_and_Time_of_Shift.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Location_Of_Shift.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Status_of_Shift.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Type_of_Shift.dart';
 
 class CustomShiftWidget extends StatelessWidget {
   const CustomShiftWidget({super.key});

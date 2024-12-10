@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Custom_Shift_Icon.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_Shift_Icon.dart';
 
-class LocationOfShift extends StatelessWidget {
-  const LocationOfShift({super.key});
+class TypeOfShift extends StatelessWidget {
+  const TypeOfShift({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CustomShiftIcon(
-            icon: Icon(
-          Icons.location_on_rounded,
+            icon: ImageIcon(
+          AssetImage("assets/icons/Type.png"),
           color: Palate.primaryColor,
         )),
         Text(
-          "30 Ulomogo Street, Toongi",
+          "Plumber",
           style: TextStyle(
               color: Palate.shiftTextColorSecondary,
               fontSize: 13,

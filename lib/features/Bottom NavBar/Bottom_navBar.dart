@@ -5,7 +5,7 @@ import 'package:shifts_management/features/Profile_Screen/Profile_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/Shifts_Screen.dart';
 
 class BottomNavbar extends StatefulWidget {
-  BottomNavbar({super.key});
+  const BottomNavbar({super.key});
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
 }
@@ -20,7 +20,7 @@ class _BottomNavbarState extends State<BottomNavbar>
     super.initState();
     for (int i = 0; i < _icons.length; i++) {
       AnimationController controller = AnimationController(
-        duration: Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 200),
         vsync: this,
       );
       controller.value = 0;
@@ -63,29 +63,30 @@ class _BottomNavbarState extends State<BottomNavbar>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: IndexedStack(
-        children: _screens,
         index: _currentIndex,
+        children: _screens,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         backgroundColor: Palate.primaryColor,
         onPressed: () {},
-        child: Icon(
+        shape: const CircleBorder(),
+        child: const Icon(
           size: 30,
           Icons.add,
           color: Palate.navBarColor,
         ),
-        shape: const CircleBorder(),
       ),
-      bottomSheet: _buildBottomBar(),
+      bottomNavigationBar: _buildBottomBar(),
     );
   }
 
   Widget _buildBottomBar() {
     return BottomAppBar(
-      padding: EdgeInsets.only(left: 8),
+      padding: const EdgeInsets.only(left: 8),
       shadowColor: Colors.transparent,
       height: 70,
       color: Palate.navBarColor,
@@ -119,7 +120,7 @@ class _BottomNavbarState extends State<BottomNavbar>
               );
             },
           ),
-          Container(
+          SizedBox(
             height: 60,
             width: 90,
             child: IconButton(

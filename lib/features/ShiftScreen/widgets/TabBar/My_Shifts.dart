@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Custom_Shift_Widget.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_Shift_Widget.dart';
 
 class MyShifts extends StatelessWidget {
   const MyShifts({super.key});

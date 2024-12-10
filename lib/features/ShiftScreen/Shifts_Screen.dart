@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Worked_Time.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/My_Shifts.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Worked_Time.dart';
 
 class ShiftsScreen extends StatelessWidget {
   const ShiftsScreen({super.key});
