@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Bottom_Sheet_Filter.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Worked_Time.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/My_Shifts.dart';
 
@@ -18,9 +19,12 @@ class ShiftsScreen extends StatelessWidget {
               message: "Filter by",
               child: IconButton(
                   onPressed: () {
-                    showModalBottomSheet(context: context, builder: (context) {
-                      return Container();
-                    },);
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return BottomSheetFilter();
+                      },
+                    );
                   },
                   icon: const Icon(
                     Icons.filter_alt,
@@ -40,7 +44,7 @@ class ShiftsScreen extends StatelessWidget {
             child: Column(
               children: [
                 WorkedTime(),
-                const SizedBox(
+                SizedBox(
                   height: 8,
                 ),
                 TabBar(
@@ -67,7 +71,7 @@ class ShiftsScreen extends StatelessWidget {
           children: [
             MyShifts(),
             Container(
-              child: Center(child: Text("Created Shift")),
+              child: const Center(child: Text("Created Shift")),
             ),
           ],
         ),
