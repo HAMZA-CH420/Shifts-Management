@@ -17,7 +17,11 @@ class ShiftsScreen extends StatelessWidget {
             Tooltip(
               message: "Filter by",
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(context: context, builder: (context) {
+                      return Container();
+                    },);
+                  },
                   icon: const Icon(
                     Icons.filter_alt,
                     size: 28,

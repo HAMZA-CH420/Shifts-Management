@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/HomeScreen/Chat_HomePage.dart';
 import 'package:shifts_management/features/Profile_Screen/Profile_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/Shifts_Screen.dart';
+import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({super.key});
@@ -72,7 +74,9 @@ class _BottomNavbarState extends State<BottomNavbar>
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         backgroundColor: Palate.primaryColor,
-        onPressed: () {},
+        onPressed: () {
+          context.read<ShiftProvider>().addShift();
+        },
         shape: const CircleBorder(),
         child: const Icon(
           size: 30,
