@@ -12,7 +12,7 @@ class CustomSelectWidget extends StatelessWidget {
           padding: EdgeInsets.only(left: 20),
           alignment: Alignment.centerLeft,
           width: 290,
-          height: 50,
+          height: 40,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
@@ -29,6 +29,7 @@ class CustomSelectWidget extends StatelessWidget {
           ),
         ),
         Container(
+          height: 40,
           width: 60,
           decoration: BoxDecoration(
               color: Palate.primaryColor,
