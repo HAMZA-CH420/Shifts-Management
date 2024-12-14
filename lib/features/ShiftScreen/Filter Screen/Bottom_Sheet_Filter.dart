@@ -26,7 +26,55 @@ class BottomSheetFilter extends StatelessWidget {
           ),
           CustomSelectWidget(),
           CustomBanner(bannerTitle: "Status"),
-          CustomOutlinedbutton(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomOutlinedbutton(
+                Status: "Ongoing",
+              ),
+              CustomOutlinedbutton(
+                Status: "Upcoming",
+              ),
+              CustomOutlinedbutton(
+                Status: "Late",
+              ),
+              CustomOutlinedbutton(
+                Status: "Break",
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              CustomOutlinedbutton(
+                Status: "Completed",
+              ),
+              CustomOutlinedbutton(
+                Status: "InReview",
+              ),
+              CustomOutlinedbutton(
+                Status: "Pending",
+              ),
+              CustomOutlinedbutton(
+                Status: "Paid",
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 5),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: CustomOutlinedbutton(
+                Status: "Open Shift",
+              ),
+            ),
+          ),
         ],
       ),
     );

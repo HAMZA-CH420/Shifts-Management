@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Bottom_Sheet_Filter.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Worked_Time.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/Created_Shifts.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/TabBar/My_Shifts.dart';
 
 class ShiftsScreen extends StatelessWidget {
@@ -70,9 +71,7 @@ class ShiftsScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             MyShifts(),
-            Container(
-              child: const Center(child: Text("Created Shift")),
-            ),
+            CreatedShifts(),
           ],
         ),
       ),
