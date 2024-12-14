@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Banner.dart';
+import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Widget/Custom_OutlinedButton.dart';
 import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Widget/Custom_Select_Widget.dart';
 
 class BottomSheetFilter extends StatelessWidget {
@@ -24,7 +25,8 @@ class BottomSheetFilter extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),
           ),
           CustomSelectWidget(),
-          CustomBanner(bannerTitle: "Status")
+          CustomBanner(bannerTitle: "Status"),
+          CustomOutlinedbutton(),
         ],
       ),
     );
