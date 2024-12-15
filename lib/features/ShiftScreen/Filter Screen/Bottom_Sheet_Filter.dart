@@ -94,7 +94,11 @@ class BottomSheetFilter extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(
+            height: 25,
+          ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
