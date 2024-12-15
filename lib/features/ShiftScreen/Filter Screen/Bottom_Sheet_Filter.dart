@@ -75,6 +75,7 @@ class BottomSheetFilter extends StatelessWidget {
               ),
             ),
           ),
+          CustomBanner(bannerTitle: "Date"),
         ],
       ),
     );
