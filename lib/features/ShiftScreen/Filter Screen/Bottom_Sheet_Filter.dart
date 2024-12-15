@@ -1,8 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shifts_management/UiHelpers/widgets/Custom_Banner.dart';
+import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Widget/Custom_OutlinedButton.dart';
 import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Widget/Custom_Select_Widget.dart';
+import 'package:shifts_management/features/ShiftScreen/Filter%20Screen/Widget/Custom_banner.dart';
+import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_date%20widget.dart';
 
 class BottomSheetFilter extends StatelessWidget {
   const BottomSheetFilter({super.key});
@@ -25,7 +26,7 @@ class BottomSheetFilter extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),
           ),
           CustomSelectWidget(),
-          CustomBanner(bannerTitle: "Status"),
+          CustomFilterBanner(bannerTitle: "Status"),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -75,7 +76,57 @@ class BottomSheetFilter extends StatelessWidget {
               ),
             ),
           ),
-          CustomBanner(bannerTitle: "Date"),
+          CustomFilterBanner(bannerTitle: "Date"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomDateBox(
+                value: "04",
+                title: "DD",
+              ),
+              CustomDateBox(
+                value: "12",
+                title: "MM",
+              ),
+              CustomDateBox(
+                value: "2024",
+                title: "YYYY",
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Palate.navBarColor,
+                    fixedSize: const Size(140, 55),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Clear Filter",
+                    style: TextStyle(
+                      color: Palate.primaryColor,
+                    ),
+                  )),
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Palate.primaryColor,
+                    fixedSize: const Size(140, 55),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5)),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    "Show Results",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      color: Palate.navBarColor,
+                    ),
+                  )),
+            ],
+          )
         ],
       ),
     );
