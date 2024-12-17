@@ -3,7 +3,6 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class WorkedTime extends StatelessWidget {
   const WorkedTime({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Padding(

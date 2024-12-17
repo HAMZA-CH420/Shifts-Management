@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
+import 'package:shifts_management/features/ShiftScreen/ShiftDetail/Shift_Detail.dart';
 import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 class MyShifts extends StatelessWidget {
@@ -15,15 +17,23 @@ class MyShifts extends StatelessWidget {
           horizontal: 20,
           vertical: 20,
         ),
-        child: ListView.separated(
-          itemCount: Shifts.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Shifts.isNotEmpty
-                ? Shifts[index]
-                : SvgPicture.asset("assets/images/Shift.svg");
+        child: InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                PageTransition(
+                    child: ShiftDetail(), type: PageTransitionType.fade));
           },
-          separatorBuilder: (BuildContext context, int index) => SizedBox(
-            height: 14,
+          child: ListView.separated(
+            itemCount: Shifts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Shifts.isNotEmpty
+                  ? Shifts[index]
+                  : SvgPicture.asset("assets/images/Shift.svg");
+            },
+            separatorBuilder: (BuildContext context, int index) => SizedBox(
+              height: 14,
+            ),
           ),
         ),
       ),
