@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Banner.dart';
+import 'package:shifts_management/features/ShiftScreen/ShiftDetail/ActivityScreen/Activity_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen/Details_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/Widgets/Custom_Time_Widget.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Status_of_Shift.dart';
@@ -71,9 +72,7 @@ class ShiftDetail extends StatelessWidget {
         body: const TabBarView(
           children: [
             DetailsScreen(),
-            Tab(
-              text: "Activities",
-            ),
+            ActivityScreen(),
           ],
         ),
       ),

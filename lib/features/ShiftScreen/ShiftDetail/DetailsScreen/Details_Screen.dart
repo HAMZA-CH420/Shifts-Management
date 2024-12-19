@@ -17,7 +17,7 @@ class DetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
-          spacing: 20,
+          spacing: 15,
           children: [
             InkWell(
               child: const CustomMap(),
@@ -78,7 +78,18 @@ class DetailsScreen extends StatelessWidget {
                   color: Palate.TextFieldTextColor),
             ),
             CustomButtonShift(
+              onTap: () {},
               btnName: "Take a Photo",
+            ),
+            CustomButtonShift(
+              btnName: "Take a break",
+              onTap: () {},
+            ),
+            CustomButtonShift(
+              onTap: () {},
+              btnName: "End Job",
+              bgColor: Palate.primaryColor,
+              color: Palate.navBarColor,
             )
           ],
         ),
