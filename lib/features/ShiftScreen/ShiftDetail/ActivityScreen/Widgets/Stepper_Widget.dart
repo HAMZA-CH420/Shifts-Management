@@ -11,8 +11,6 @@ class StepperWidget extends StatefulWidget {
 class _StepperWidgetState extends State<StepperWidget> {
   int _currentStep = 0;
 
-  bool _isActive = true;
-
   void onContinue() {
     if (_currentStep < 6) {
       setState(() {
@@ -38,9 +36,8 @@ class _StepperWidgetState extends State<StepperWidget> {
       connectorThickness: 1.5,
       steps: [
         Step(
-          isActive: _currentStep == 0 ? _isActive : !_isActive,
-          stepStyle:
-              StepStyle(color: _isActive ? Palate.primaryColor : Colors.grey),
+          isActive: _currentStep >= 0,
+          stepStyle: StepStyle(color: Palate.primaryColor),
           title: const Text(
             "Started Location",
             style: TextStyle(
@@ -59,16 +56,20 @@ class _StepperWidgetState extends State<StepperWidget> {
                 )),
           ),
         ),
-        const Step(
-            title: Text(
+        Step(
+            isActive: _currentStep >= 1,
+            stepStyle: StepStyle(color: Palate.primaryColor),
+            title: const Text(
               "Started Work",
               style: TextStyle(
                   color: Palate.primaryColor,
                   fontSize: 15,
                   fontWeight: FontWeight.w600),
             ),
-            content: Text("Break")),
+            content: const Text("Break")),
         Step(
+          isActive: _currentStep >= 2,
+          stepStyle: StepStyle(color: Palate.primaryColor),
           title: const Text(
             "Took a selfie and sent to admin",
             style: TextStyle(
@@ -87,42 +88,50 @@ class _StepperWidgetState extends State<StepperWidget> {
                 )),
           ),
         ),
-        const Step(
-            title: Text(
+        Step(
+            isActive: _currentStep >= 3,
+            stepStyle: StepStyle(color: Palate.primaryColor),
+            title: const Text(
               "Took a meal break",
               style: TextStyle(
                   color: Palate.primaryColor,
                   fontSize: 15,
                   fontWeight: FontWeight.w600),
             ),
-            content: Text("Meal Break")),
-        const Step(
-            title: Text(
+            content: const Text("Meal Break")),
+        Step(
+            isActive: _currentStep >= 4,
+            stepStyle: StepStyle(color: Palate.primaryColor),
+            title: const Text(
               "Started work again",
               style: TextStyle(
                   color: Palate.primaryColor,
                   fontSize: 15,
                   fontWeight: FontWeight.w600),
             ),
-            content: Text("work")),
-        const Step(
-            title: Text(
+            content: const Text("work")),
+        Step(
+            isActive: _currentStep >= 5,
+            stepStyle: StepStyle(color: Palate.primaryColor),
+            title: const Text(
               "Take a selfie and send to admin",
               style: TextStyle(
                   color: Palate.primaryColor,
                   fontSize: 15,
                   fontWeight: FontWeight.w600),
             ),
-            content: Text("selfie")),
-        const Step(
-            title: Text(
+            content: const Text("selfie")),
+        Step(
+            isActive: _currentStep >= 6,
+            stepStyle: StepStyle(color: Palate.primaryColor),
+            title: const Text(
               "Started Work",
               style: TextStyle(
                   color: Palate.primaryColor,
                   fontSize: 15,
                   fontWeight: FontWeight.w600),
             ),
-            content: Text("Ended shift")),
+            content: const Text("Ended shift")),
       ],
     );
   }

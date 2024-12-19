@@ -7,8 +7,18 @@ import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/Widgets/Custom_Time_Widget.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Status_of_Shift.dart';
 
-class ShiftDetail extends StatelessWidget {
+class ShiftDetail extends StatefulWidget {
   const ShiftDetail({super.key});
+
+  @override
+  State<ShiftDetail> createState() => _ShiftDetailState();
+}
+
+class _ShiftDetailState extends State<ShiftDetail> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
