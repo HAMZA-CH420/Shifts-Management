@@ -31,7 +31,8 @@ class MyShifts extends StatelessWidget {
                   ? Shifts[index]
                   : SvgPicture.asset("assets/images/Shift.svg");
             },
-            separatorBuilder: (BuildContext context, int index) => SizedBox(
+            separatorBuilder: (BuildContext context, int index) =>
+                const SizedBox(
               height: 14,
             ),
           ),
