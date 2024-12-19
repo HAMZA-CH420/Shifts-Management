@@ -18,6 +18,36 @@ class _ShiftDetailState extends State<ShiftDetail> {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          Future.delayed(const Duration(seconds: 3), () {
+            Navigator.pop(context);
+          });
+          return Container(
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(25)),
+            height: 300,
+            width: double.infinity,
+            child: Column(
+              spacing: 30,
+              children: [
+                const Text(
+                  "Remaining time",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                ),
+                Image.asset("assets/images/clock.png"),
+                const Text(
+                  "Hurry up only 15min are left",
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                )
+              ],
+            ),
+          );
+        },
+      );
+    });
   }
 
   @override
