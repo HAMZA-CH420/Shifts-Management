@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
@@ -18,13 +19,13 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          actions: [
-            const Icon(
+          actions: const [
+            Icon(
               Iconsax.notification,
               size: 25,
               color: Palate.PrimaryTextColor,
             ),
-            const SizedBox(
+            SizedBox(
               width: 11,
             ),
           ],
@@ -67,12 +68,14 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
           ),
         ),
         body: TabBarView(children: [
-          Container(
-            child: const Center(child: Text("Chats")),
-          ),
-          Container(
-            child: const Center(child: Text("Groups")),
-          ),
+          Center(
+              child: InkWell(
+            child: const Text("Sign Out"),
+            onTap: () async {
+              await FirebaseAuth.instance.signOut();
+            },
+          )),
+          const Center(child: Text("Groups")),
         ]),
       ),
     );
