@@ -1,12 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/SignUp_Screen.dart';
-import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -51,15 +50,16 @@ class LoginScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account?"),
+                    const Text("Don't have an account?"),
                     const SizedBox(
                       width: 3,
                     ),
                     InkWell(
                         onTap: () => Flexify.go(SignupScreen(),
                             animation: FlexifyRouteAnimations.fade,
-                            animationDuration: Duration(milliseconds: 300)),
-                        child: Text(
+                            animationDuration:
+                                const Duration(milliseconds: 300)),
+                        child: const Text(
                           "SignUp",
                           style: TextStyle(
                               color: Palate.primaryColor,
@@ -72,21 +72,14 @@ class LoginScreen extends StatelessWidget {
                 height: 23,
               ),
               CustomButton(
-                onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    PageTransition(
-                        child: BottomNavbar(),
-                        curve: Curves.elasticOut,
-                        type: PageTransitionType.bottomToTop,
-                        duration: Duration(milliseconds: 500)),
-                  );
+                onTap: () async {
+                  await loginUserWithCredentials();
                 },
                 btnName: "Login",
                 btnColor: Palate.primaryColor,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: Text(
                   "or",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
@@ -104,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    Text("Continue with Google",
+                    const Text("Continue with Google",
                         style: TextStyle(
                             color: Palate.primaryColor,
                             fontSize: 16,
@@ -117,5 +110,16 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> loginUserWithCredentials() async {
+    try {
+      final userCredentials = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
+              email: usernameController.text.trim(),
+              password: passwordController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      print(e.message);
+    }
   }
 }

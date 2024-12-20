@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,7 +6,7 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
-import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
+
 class SignupScreen extends StatefulWidget {
   SignupScreen({super.key});
 
@@ -99,15 +100,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 30,
               ),
               CustomButton(
-                onTap: () {
-                  var number = numberController.text.toString();
-                  var email = emailController.text;
-                  Flexify.go(
+                onTap: () async {
+                  await createUserWithEmailAndPassword();
+                  /* var number = numberController.text.toString();
+                  var email = emailController.text;*/
+                  /* Flexify.go(
                       OtpScreen(
                         value: isChanged ? number : email,
                       ),
                       animation: FlexifyRouteAnimations.fade,
-                      animationDuration: Duration(milliseconds: 200));
+                      animationDuration: Duration(milliseconds: 200));*/
                 },
                 btnName: "Get Otp",
                 btnColor: Palate.primaryColor,
@@ -134,8 +136,8 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                     Text(
                         isChanged
-                            ? "Continue with PhoneNumber"
-                            : "Continue with Email",
+                            ? "Continue with Email"
+                            : "Continue with PhoneNumber",
                         style: TextStyle(
                             color: Palate.primaryColor,
                             fontSize: 16,
@@ -171,5 +173,17 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> createUserWithEmailAndPassword() async {
+    try {
+      final userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim());
+      print(userCredential);
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
+    }
   }
 }
