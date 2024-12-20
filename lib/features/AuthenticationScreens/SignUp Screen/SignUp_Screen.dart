@@ -6,6 +6,7 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
+import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({super.key});
@@ -33,7 +34,7 @@ class _SignupScreenState extends State<SignupScreen> {
             onPressed: () {
               Flexify.back();
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Palate.primaryColor,
             )),
@@ -79,15 +80,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Already have an account?"),
+                    const Text("Already have an account?"),
                     const SizedBox(
                       width: 3,
                     ),
                     InkWell(
                         onTap: () => Flexify.go(LoginScreen(),
                             animation: FlexifyRouteAnimations.fade,
-                            animationDuration: Duration(milliseconds: 200)),
-                        child: Text(
+                            animationDuration:
+                                const Duration(milliseconds: 200)),
+                        child: const Text(
                           "Login",
                           style: TextStyle(
                               color: Palate.primaryColor,
@@ -138,7 +140,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         isChanged
                             ? "Continue with Email"
                             : "Continue with PhoneNumber",
-                        style: TextStyle(
+                        style: const TextStyle(
                             color: Palate.primaryColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w400)),
@@ -160,7 +162,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     const SizedBox(
                       width: 10,
                     ),
-                    Text("Continue with Google",
+                    const Text("Continue with Google",
                         style: TextStyle(
                             color: Palate.primaryColor,
                             fontSize: 16,
@@ -176,14 +178,36 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Future<void> createUserWithEmailAndPassword() async {
-    try {
-      final userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: emailController.text.trim(),
-              password: passwordController.text.trim());
-      print(userCredential);
-    } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("$e")));
+    if (!isChanged) {
+      try {
+        final userCredential = await FirebaseAuth.instance
+            .createUserWithEmailAndPassword(
+                email: emailController.text.trim(),
+                password: passwordController.text.trim());
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginScreen(),
+            ));
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("$e")));
+      }
+    } else {
+      FirebaseAuth.instance.verifyPhoneNumber(
+          phoneNumber: numberController.text.toString(),
+          verificationCompleted: (PhoneAuthCredential credentials) {},
+          verificationFailed: (FirebaseAuthException ex) {},
+          codeSent: (String verificationId, int? resendToken) {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => OtpScreen(
+                    verificationId: verificationId,
+                  ),
+                ));
+          },
+          codeAutoRetrievalTimeout: (String verificationId) {});
     }
   }
 }
