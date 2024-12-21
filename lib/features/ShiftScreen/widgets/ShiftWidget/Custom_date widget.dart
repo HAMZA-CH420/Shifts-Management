@@ -8,7 +8,7 @@ class CustomDateBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      elevation: 2,
+      elevation: 0.2,
       child: Container(
         height: 60,
         width: 100,

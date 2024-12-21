@@ -4,6 +4,7 @@ import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custo
 class ShiftProvider extends ChangeNotifier {
   final List<String> status = [];
   final List<Widget> _myShifts = [CustomShiftWidget()];
+
   //Method to add Shifts
   void addShift() {
     _myShifts.add(const CustomShiftWidget());
