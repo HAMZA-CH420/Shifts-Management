@@ -25,25 +25,27 @@ class CreateShiftScreen extends StatelessWidget {
           child: Column(
             spacing: 22,
             children: [
-              const CustomAddShiftTile(
-                banner: Text(
+              CustomAddShiftTile(
+                onTap: () {},
+                banner: const Text(
                   "Select category",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
                       fontSize: 15,
                       fontWeight: FontWeight.w500),
                 ),
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_drop_down,
                   color: Palate.primaryColor,
                 ),
               ),
-              const CustomAddShiftTile(
-                icon: Icon(
+              CustomAddShiftTile(
+                onTap: () {},
+                icon: const Icon(
                   Icons.location_on,
                   color: Palate.primaryColor,
                 ),
-                banner: Text(
+                banner: const Text(
                   "Add Location",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
@@ -51,12 +53,13 @@ class CreateShiftScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ),
               ),
-              const CustomAddShiftTile(
-                icon: Icon(
+              CustomAddShiftTile(
+                onTap: () {},
+                icon: const Icon(
                   Icons.calendar_month_rounded,
                   color: Palate.primaryColor,
                 ),
-                banner: Text(
+                banner: const Text(
                   "Add Date",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
@@ -64,12 +67,13 @@ class CreateShiftScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ),
               ),
-              const CustomAddShiftTile(
-                icon: Icon(
+              CustomAddShiftTile(
+                onTap: () {},
+                icon: const Icon(
                   Icons.watch_later,
                   color: Palate.primaryColor,
                 ),
-                banner: Text(
+                banner: const Text(
                   "Shift Time",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
@@ -83,12 +87,13 @@ class CreateShiftScreen extends StatelessWidget {
                 bgColor: Palate.navBarColor,
                 color: Palate.shiftTextColor,
               ),
-              const CustomAddShiftTile(
-                icon: Icon(
+              CustomAddShiftTile(
+                onTap: () {},
+                icon: const Icon(
                   Icons.arrow_drop_down,
                   color: Palate.primaryColor,
                 ),
-                banner: Text(
+                banner: const Text(
                   "Status",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
@@ -96,12 +101,13 @@ class CreateShiftScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500),
                 ),
               ),
-              const CustomAddShiftTile(
-                icon: Icon(
+              CustomAddShiftTile(
+                onTap: () {},
+                icon: const Icon(
                   Icons.people,
                   color: Palate.primaryColor,
                 ),
-                banner: Text(
+                banner: const Text(
                   "Add People",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
@@ -112,12 +118,13 @@ class CreateShiftScreen extends StatelessWidget {
               DescriptionWidget(
                 controller: descriptionController,
               ),
-              const CustomAddShiftTile(
-                icon: Icon(
+              CustomAddShiftTile(
+                onTap: () {},
+                icon: const Icon(
                   Icons.people,
                   color: Colors.transparent,
                 ),
-                banner: Text(
+                banner: const Text(
                   "Add Tags",
                   style: TextStyle(
                       color: Palate.shiftTileBannerColor,
@@ -127,6 +134,14 @@ class CreateShiftScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: CustomButtonShift(
+          btnName: "create",
+          onTap: () {},
+          color: Palate.navBarColor,
+          bgColor: Palate.primaryColor,
         ),
       ),
     );
