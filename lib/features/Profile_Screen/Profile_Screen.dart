@@ -90,9 +90,6 @@ class ProfileScreen extends StatelessWidget {
                         icon: Icons.edit_note_outlined,
                         bannerTitle: "Shift Edit",
                         onTap: () {}),
-                    const SizedBox(
-                      height: 65,
-                    )
                   ],
                 ),
               ),
