@@ -6,50 +6,81 @@ import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Statu
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Type_of_Shift.dart';
 
 class CustomShiftWidget extends StatelessWidget {
-  const CustomShiftWidget({super.key});
-
+  const CustomShiftWidget(
+      {super.key,
+      required this.date,
+      required this.duration,
+      required this.startingTime,
+      required this.endingTime,
+      required this.location,
+      required this.category,
+      required this.status});
+  final String date,
+      duration,
+      startingTime,
+      endingTime,
+      location,
+      category,
+      status;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(5)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                DateOfShift(),
-                HoursAndTimeOfShift(),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                CircleAvatar(child: Image.asset("assets/images/Dp.png")),
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    LocationOfShift(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TypeOfShift(),
-                        SizedBox(
-                          width: 80,
-                        ),
-                        StatusOfShift(),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10,
+      ),
+      child: Container(
+        height: 150,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  DateOfShift(
+                    date: date,
+                  ),
+                  HoursAndTimeOfShift(
+                    duration: duration,
+                    startingTime: startingTime,
+                    endingTime: endingTime,
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CircleAvatar(child: Image.asset("assets/images/Dp.png")),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      LocationOfShift(
+                        location: location,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TypeOfShift(
+                            category: category,
+                          ),
+                          const SizedBox(
+                            width: 80,
+                          ),
+                          StatusOfShift(
+                            status: status,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

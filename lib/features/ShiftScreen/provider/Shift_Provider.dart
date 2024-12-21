@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_Shift_Widget.dart';
 
 class ShiftProvider extends ChangeNotifier {
   final List<String> status = [];
-  final List<Widget> _myShifts = [CustomShiftWidget()];
+  final List<Widget> _myShifts = [];
 
   //Method to add Shifts
   void addShift() {
-    _myShifts.add(const CustomShiftWidget());
+    _myShifts.add;
     notifyListeners();
   } // Method to fetch Shifts
 

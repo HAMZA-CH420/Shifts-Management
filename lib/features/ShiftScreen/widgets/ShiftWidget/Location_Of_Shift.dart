@@ -3,8 +3,8 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_Shift_Icon.dart';
 
 class LocationOfShift extends StatelessWidget {
-  const LocationOfShift({super.key});
-
+  LocationOfShift({super.key, required this.location});
+  final String location;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -15,7 +15,7 @@ class LocationOfShift extends StatelessWidget {
           color: Palate.primaryColor,
         )),
         Text(
-          "30 Ulomogo Street, Toongi",
+          location,
           style: TextStyle(
               color: Palate.shiftTextColorSecondary,
               fontSize: 13,

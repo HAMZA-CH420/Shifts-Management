@@ -8,8 +8,8 @@ import 'package:shifts_management/features/ShiftScreen/ShiftDetail/Widgets/Custo
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Status_of_Shift.dart';
 
 class ShiftDetail extends StatefulWidget {
-  const ShiftDetail({super.key});
-
+  ShiftDetail({super.key, required this.status});
+  final String status;
   @override
   State<ShiftDetail> createState() => _ShiftDetailState();
 }
@@ -22,7 +22,7 @@ class _ShiftDetailState extends State<ShiftDetail> {
       showModalBottomSheet(
         context: context,
         builder: (context) {
-          Future.delayed(const Duration(seconds: 3), () {
+          Future.delayed(const Duration(seconds: 2), () {
             Navigator.pop(context);
           });
           return Container(
@@ -81,7 +81,7 @@ class _ShiftDetailState extends State<ShiftDetail> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomBanner(bannerTitle: "Bars & Waiters"),
-                      const StatusOfShift(),
+                      StatusOfShift(status: widget.status)
                     ],
                   ),
                   const CustomTimeWidget(),

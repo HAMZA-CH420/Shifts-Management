@@ -10,6 +10,7 @@ class ActivityScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
+        color: Colors.transparent,
         height: 70,
         child: CustomButtonShift(
           btnName: "End Job",
