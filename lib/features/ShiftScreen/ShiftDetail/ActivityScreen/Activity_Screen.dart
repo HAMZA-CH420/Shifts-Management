@@ -9,11 +9,14 @@ class ActivityScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomSheet: CustomButtonShift(
-        btnName: "End Job",
-        onTap: () {},
-        color: Palate.navBarColor,
-        bgColor: Palate.primaryColor,
+      bottomNavigationBar: BottomAppBar(
+        height: 70,
+        child: CustomButtonShift(
+          btnName: "End Job",
+          onTap: () {},
+          color: Palate.navBarColor,
+          bgColor: Palate.primaryColor,
+        ),
       ),
       body: StepperWidget(),
     );

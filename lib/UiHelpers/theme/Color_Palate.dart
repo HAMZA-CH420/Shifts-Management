@@ -9,4 +9,5 @@ class Palate {
   static const dividerColor = Color(0XFFDFE2EB);
   static const shiftTextColor = Color(0XFF001C37);
   static const shiftTextColorSecondary = Color(0XFF73777F);
+  static const shiftTileBannerColor = Color(0XFF526070);
 }

@@ -1,4 +1,3 @@
-import 'package:flexify/flexify.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,21 +14,16 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Iconsax.notification)),
+          IconButton(onPressed: () {}, icon: const Icon(Iconsax.notification)),
         ],
-        leading: IconButton(
-            onPressed: () {
-              Flexify.back();
-            },
-            icon: Icon(Icons.arrow_back_sharp)),
-        title: Text(
+        title: const Text(
           "Profile",
           style: TextStyle(fontSize: 22),
         ),
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 12),
+        padding: const EdgeInsets.only(left: 20),
         child: Center(
             child: SingleChildScrollView(
           child: Column(
@@ -49,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                       bannerTitle: "Shift",
                       icon: Icons.watch_later_rounded,
                     ),
-                    Divider(
+                    const Divider(
                       color: Palate.dividerColor,
                     ),
                     CustomProfileBanner(
@@ -57,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                       bannerTitle: "Account",
                       onTap: () {},
                     ),
-                    Divider(
+                    const Divider(
                       color: Palate.dividerColor,
                     ),
                     CustomProfileBanner(
@@ -70,7 +64,7 @@ class ProfileScreen extends StatelessWidget {
                         icon: CupertinoIcons.heart_fill,
                         bannerTitle: "My Planner",
                         onTap: () {}),
-                    Divider(
+                    const Divider(
                       color: Palate.dividerColor,
                     ),
                     CustomProfileBanner(
@@ -82,14 +76,14 @@ class ProfileScreen extends StatelessWidget {
                         icon: FontAwesomeIcons.language,
                         bannerTitle: "Language",
                         onTap: () {}),
-                    Divider(
+                    const Divider(
                       color: Palate.dividerColor,
                     ),
                     CustomProfileBanner(
                         icon: Icons.dark_mode,
                         bannerTitle: "Dark Mode",
                         onTap: () {}),
-                    Divider(
+                    const Divider(
                       color: Palate.dividerColor,
                     ),
                     CustomProfileBanner(

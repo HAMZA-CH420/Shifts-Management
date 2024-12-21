@@ -44,7 +44,7 @@ class CustomProfileBanner extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 114,
+              width: 140,
             ),
             IconButton(
                 onPressed: onTap,
