@@ -18,9 +18,6 @@ class _CustomOutlinedbuttonState extends State<CustomOutlinedbutton> {
     return InkWell(
       onTap: () {
         _isSelected = !_isSelected;
-        if (_isSelected) {
-          color = Palate.primaryColor;
-        }
         setState(() {});
       },
       child: Container(

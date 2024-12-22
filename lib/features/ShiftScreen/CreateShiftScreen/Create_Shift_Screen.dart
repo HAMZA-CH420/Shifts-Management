@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:popover/popover.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Custom_Add_Shift_Tile.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Description_Widget.dart';
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen/Widgets/Custom_Button_Shift.dart';
 
-class CreateShiftScreen extends StatelessWidget {
-  CreateShiftScreen({super.key});
+class CreateShiftScreen extends StatefulWidget {
+  const CreateShiftScreen({super.key});
+
+  @override
+  State<CreateShiftScreen> createState() => _CreateShiftScreenState();
+}
+
+class _CreateShiftScreenState extends State<CreateShiftScreen> {
   TextEditingController descriptionController = TextEditingController();
+  @override
+  void dispose() {
+    descriptionController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +35,20 @@ class CreateShiftScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back)),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: SingleChildScrollView(
-          child: Column(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: SingleChildScrollView(
+              child: Column(
             spacing: 22,
             children: [
               CustomAddShiftTile(
-                onTap: () {},
+                onTap: () => showPopover(
+                  height: 300,
+                  width: 320,
+                  context: context,
+                  bodyBuilder: (context) => Container(
+                    color: Colors.purple,
+                  ),
+                ),
                 banner: const Text(
                   "Select category",
                   style: TextStyle(
@@ -135,9 +155,7 @@ class CreateShiftScreen extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      ),
+          ))),
       bottomNavigationBar: BottomAppBar(
         child: CustomButtonShift(
           btnName: "create",
