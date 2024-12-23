@@ -3,6 +3,7 @@ import 'package:popover/popover.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Custom_Add_Shift_Tile.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Description_Widget.dart';
+import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Menu_Items.dart';
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen/Widgets/Custom_Button_Shift.dart';
 
 class CreateShiftScreen extends StatefulWidget {
@@ -41,14 +42,13 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
             spacing: 22,
             children: [
               CustomAddShiftTile(
-                onTap: () => showPopover(
-                  height: 300,
-                  width: 320,
-                  context: context,
-                  bodyBuilder: (context) => Container(
-                    color: Colors.purple,
-                  ),
-                ),
+                onTap: () {
+                  showPopover(
+                      height: 300,
+                      width: 370,
+                      context: context,
+                      bodyBuilder: (context) => MenuItems());
+                },
                 banner: const Text(
                   "Select category",
                   style: TextStyle(

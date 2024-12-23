@@ -22,6 +22,11 @@ class MyShifts extends StatelessWidget {
               child: CircularProgressIndicator(),
             );
           }
+          if (!snapshot.hasData) {
+            return const Center(
+              child: Text("No Shifts Available"),
+            );
+          }
           return ListView.builder(
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (BuildContext context, int index) {
