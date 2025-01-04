@@ -151,7 +151,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 height: 15,
               ),
               CustomButton(
-                onTap: () {},
+                onTap: () => signInWithGoogle,
                 btnColor: Colors.transparent,
                 btnname: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -209,5 +209,10 @@ class _SignupScreenState extends State<SignupScreen> {
           },
           codeAutoRetrievalTimeout: (String verificationId) {});
     }
+  }
+
+  void signInWithGoogle() {
+    GoogleAuthProvider _signWithGoogle = GoogleAuthProvider();
+    FirebaseAuth.instance.signInWithProvider(_signWithGoogle);
   }
 }

@@ -86,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               CustomButton(
-                onTap: () {},
+                onTap: () => signInWithGoogle,
                 btnColor: Colors.transparent,
                 btnname: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -121,5 +121,10 @@ class LoginScreen extends StatelessWidget {
     } on FirebaseAuthException catch (e) {
       print(e.message);
     }
+  }
+
+  void signInWithGoogle() {
+    GoogleAuthProvider _signWithGoogle = GoogleAuthProvider();
+    FirebaseAuth.instance.signInWithProvider(_signWithGoogle);
   }
 }

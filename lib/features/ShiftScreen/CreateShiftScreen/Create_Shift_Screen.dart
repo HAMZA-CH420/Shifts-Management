@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:popover/popover.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Custom_Add_Shift_Tile.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Description_Widget.dart';
-import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Menu_Items.dart';
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen/Widgets/Custom_Button_Shift.dart';
 
 class CreateShiftScreen extends StatefulWidget {
@@ -21,6 +19,16 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
     super.dispose();
   }
 
+  final _categories = [
+    "Plumber",
+    "Driver",
+    "Cock",
+    "Cleaner",
+    "Guard",
+    "Bartender",
+    "Bouncer",
+    "Truck Driver"
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,11 +51,17 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
             children: [
               CustomAddShiftTile(
                 onTap: () {
-                  showPopover(
-                      height: 300,
-                      width: 370,
-                      context: context,
-                      bodyBuilder: (context) => MenuItems());
+                  DropdownButton<String>(
+                    items: _categories.map((String dropDownItem) {
+                      return DropdownMenuItem<String>(
+                        value: dropDownItem,
+                        child: Text(dropDownItem),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      print('Selected: $value');
+                    },
+                  );
                 },
                 banner: const Text(
                   "Select category",
