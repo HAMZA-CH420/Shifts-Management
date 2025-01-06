@@ -124,7 +124,11 @@ class LoginScreen extends StatelessWidget {
   }
 
   void signInWithGoogle() {
-    GoogleAuthProvider _signWithGoogle = GoogleAuthProvider();
-    FirebaseAuth.instance.signInWithProvider(_signWithGoogle);
+    try {
+      GoogleAuthProvider googleProvider = GoogleAuthProvider();
+      FirebaseAuth.instance.signInWithProvider(googleProvider);
+    } catch (error) {
+      print(error);
+    }
   }
 }

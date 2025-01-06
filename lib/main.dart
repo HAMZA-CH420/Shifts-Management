@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/App_Theme.dart';
-import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
-import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
+import 'package:shifts_management/features/IntroScreens/Splash%20Screens/1st_Splash_Screen.dart';
 import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 void main() async {
@@ -33,19 +31,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Shifts Management',
         theme: AppTheme.lightTheme,
-        home: StreamBuilder(
-          stream: FirebaseAuth.instance.authStateChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
-            }
-            if (snapshot.data != null) {
-              return const BottomNavbar();
-            } else {
-              return LoginScreen();
-            }
-          },
-        ),
+        home: const FirstSplashScreen(),
       ),
     );
   }
