@@ -66,7 +66,8 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                     }
                   },
                 ),
-                type: PageTransitionType.rightToLeft));
+                type: PageTransitionType.rightToLeft,
+                duration: Duration(seconds: 1)));
       }
     });
   }

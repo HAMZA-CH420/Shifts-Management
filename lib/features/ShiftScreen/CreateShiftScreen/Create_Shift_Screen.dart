@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Custom_Add_Shift_Tile.dart';
 import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/Description_Widget.dart';
+import 'package:shifts_management/features/ShiftScreen/CreateShiftScreen/widgets/drop_down.dart';
 import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen/Widgets/Custom_Button_Shift.dart';
 
 class CreateShiftScreen extends StatefulWidget {
@@ -19,16 +20,6 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
     super.dispose();
   }
 
-  final _categories = [
-    "Plumber",
-    "Driver",
-    "Cock",
-    "Cleaner",
-    "Guard",
-    "Bartender",
-    "Bouncer",
-    "Truck Driver"
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,32 +40,7 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
               child: Column(
             spacing: 22,
             children: [
-              CustomAddShiftTile(
-                onTap: () {
-                  DropdownButton<String>(
-                    items: _categories.map((String dropDownItem) {
-                      return DropdownMenuItem<String>(
-                        value: dropDownItem,
-                        child: Text(dropDownItem),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      print('Selected: $value');
-                    },
-                  );
-                },
-                banner: const Text(
-                  "Select category",
-                  style: TextStyle(
-                      color: Palate.shiftTileBannerColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500),
-                ),
-                icon: const Icon(
-                  Icons.arrow_drop_down,
-                  color: Palate.primaryColor,
-                ),
-              ),
+              DropDownCategoryWidget(),
               CustomAddShiftTile(
                 onTap: () {},
                 icon: const Icon(
