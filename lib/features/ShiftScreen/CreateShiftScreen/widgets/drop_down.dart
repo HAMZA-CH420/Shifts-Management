@@ -4,7 +4,6 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 class DropDownCategoryWidget extends StatelessWidget {
   DropDownCategoryWidget({super.key, this.onTap});
   final VoidCallback? onTap;
-  String category = "";
   final _categories = [
     "Plumber",
     "Driver",
@@ -46,9 +45,7 @@ class DropDownCategoryWidget extends StatelessWidget {
                 child: Text(categories),
               );
             }).toList(),
-            onChanged: (value) {
-              category = value!;
-            }),
+            onChanged: (value) {}),
       ),
     );
   }
