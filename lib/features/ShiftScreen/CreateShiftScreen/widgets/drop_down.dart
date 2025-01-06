@@ -31,6 +31,12 @@ class DropDownCategoryWidget extends StatelessWidget {
                 color: Palate.shiftTileBannerColor,
                 fontSize: 15,
                 fontWeight: FontWeight.w500),
+            icon: Icon(
+              Icons.arrow_drop_down,
+              color: Palate.primaryColor,
+            ),
+            borderRadius: BorderRadius.circular(10),
+            dropdownColor: Colors.white,
             decoration: const InputDecoration(
               hintText: "Select Category",
               hintStyle: TextStyle(
@@ -42,7 +48,7 @@ class DropDownCategoryWidget extends StatelessWidget {
             items: _categories.map((String categories) {
               return DropdownMenuItem(
                 value: categories,
-                child: Container(color: Colors.black, child: Text(categories)),
+                child: Text(categories),
               );
             }).toList(),
             onChanged: (value) {}),
