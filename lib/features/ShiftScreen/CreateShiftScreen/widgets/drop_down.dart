@@ -42,7 +42,7 @@ class DropDownCategoryWidget extends StatelessWidget {
             items: _categories.map((String categories) {
               return DropdownMenuItem(
                 value: categories,
-                child: Text(categories),
+                child: Container(color: Colors.black, child: Text(categories)),
               );
             }).toList(),
             onChanged: (value) {}),
