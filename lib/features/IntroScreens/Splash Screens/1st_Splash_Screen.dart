@@ -15,21 +15,21 @@ class FirstSplashScreen extends StatefulWidget {
 class _FirstSplashScreenState extends State<FirstSplashScreen> {
   @override
   void initState() {
-    Timer(Duration(milliseconds: 100), () {
+    Timer(const Duration(milliseconds: 100), () {
       Navigator.pushReplacement(
           context,
           PageTransition(
-              child: SecondSplashScreen(),
+              child: const SecondSplashScreen(),
               type: PageTransitionType.scale,
               alignment: Alignment.center,
-              duration: Duration(milliseconds: 800)));
+              duration: const Duration(milliseconds: 800)));
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: Palate.primaryColor,
     );
   }
