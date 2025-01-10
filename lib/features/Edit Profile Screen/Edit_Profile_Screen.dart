@@ -1,4 +1,3 @@
-import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -7,17 +6,26 @@ import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/Bottom%20NavBar/Bottom_navBar.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  EditProfileScreen({
+class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({
     super.key,
   });
 
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
   bool isVerified = false;
 
   TextEditingController usernameController = TextEditingController();
+
   TextEditingController nameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
+
   TextEditingController numberController = TextEditingController();
+
   TextEditingController addressController = TextEditingController();
 
   @override
@@ -25,9 +33,7 @@ class EditProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              Flexify.back();
-            },
+            onPressed: () => Navigator.pop(context),
             icon: Icon(Icons.arrow_back_sharp)),
         title: Text(
           "Edit Profile",

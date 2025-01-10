@@ -6,13 +6,15 @@ class CustomTextfield extends StatelessWidget {
       {super.key,
       required this.labelText,
       required this.controller,
-      this.isHidden = false, this.suffixText = ""});
+      this.isHidden = false,
+      this.suffixText = "",
+      this.validator});
 
   final String labelText;
   final TextEditingController controller;
   final bool isHidden;
   final String suffixText;
-
+  final FormFieldValidator? validator;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -23,6 +25,7 @@ class CustomTextfield extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: TextFormField(
+            validator: validator,
             controller: controller,
             obscureText: isHidden,
             style: TextStyle(
@@ -31,7 +34,7 @@ class CustomTextfield extends StatelessWidget {
                 fontWeight: FontWeight.w400),
             decoration: InputDecoration(
               suffixText: suffixText,
-              suffixStyle: TextStyle(color: Colors.green,fontSize: 12),
+              suffixStyle: TextStyle(color: Colors.green, fontSize: 12),
               border: InputBorder.none,
               labelStyle: TextStyle(color: Palate.labelColor),
               labelText: labelText,

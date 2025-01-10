@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -38,7 +37,7 @@ class OtpScreen extends StatelessWidget {
                   height: 30,
                 ),
                 InkWell(
-                  onTap: () => Flexify.back(),
+                  onTap: () => Navigator.pop(context),
                   child: const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     mainAxisSize: MainAxisSize.max,

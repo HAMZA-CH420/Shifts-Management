@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
 import 'package:shifts_management/features/IntroScreens/Introduction%20Screens/Helpers/Intro_items_info.dart';
@@ -143,8 +142,6 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
                 shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder()),
             onPressed: () async {
-              var pref = await SharedPreferences.getInstance();
-              pref.setBool("isLoggedIn", false);
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => LoginScreen()));
             },

@@ -42,7 +42,7 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
 
   Future<void> isLoggedIn() async {
     var pref = await SharedPreferences.getInstance();
-    bool isLoggedIn = pref.getBool("isLoggedIn") ?? false;
+    bool isLoggedIn = pref.getBool("isLoggedIn") ?? true;
     Timer(const Duration(milliseconds: 800), () {
       if (isLoggedIn) {
         Navigator.pushReplacement(
@@ -66,8 +66,8 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                     }
                   },
                 ),
-                type: PageTransitionType.rightToLeft,
-                duration: Duration(seconds: 1)));
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 200)));
       }
     });
   }

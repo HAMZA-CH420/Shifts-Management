@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flexify/flexify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
@@ -31,9 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              Flexify.back();
-            },
+            onPressed: () => Navigator.pop(context),
             icon: const Icon(
               Icons.arrow_back,
               color: Palate.primaryColor,
@@ -85,10 +82,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       width: 3,
                     ),
                     InkWell(
-                        onTap: () => Flexify.go(LoginScreen(),
-                            animation: FlexifyRouteAnimations.fade,
-                            animationDuration:
-                                const Duration(milliseconds: 200)),
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            )),
                         child: const Text(
                           "Login",
                           style: TextStyle(
@@ -104,14 +102,6 @@ class _SignupScreenState extends State<SignupScreen> {
               CustomButton(
                 onTap: () async {
                   await createUserWithEmailAndPassword();
-                  /* var number = numberController.text.toString();
-                  var email = emailController.text;*/
-                  /* Flexify.go(
-                      OtpScreen(
-                        value: isChanged ? number : email,
-                      ),
-                      animation: FlexifyRouteAnimations.fade,
-                      animationDuration: Duration(milliseconds: 200));*/
                 },
                 btnName: "Get Otp",
                 btnColor: Palate.primaryColor,
