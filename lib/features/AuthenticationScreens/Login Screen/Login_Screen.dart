@@ -6,6 +6,7 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/SignUp_Screen.dart';
+import 'package:shifts_management/features/AuthenticationScreens/viewModel/AuthProvider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -43,15 +44,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 CustomTextfield(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your username';
-                    }
-                    if (!value.contains('@')) {
-                      return 'Please enter a valid email address';
-                    }
-                    return null;
-                  },
+                  validator: (value) => AuthenticationProvider()
+                      .Validate(value, "Please enter your username"),
                   controller: usernameController,
                   labelText: "Username",
                 ),
@@ -59,15 +53,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 20,
                 ),
                 CustomTextfield(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters long';
-                    }
-                    return null;
-                  },
+                  validator: (value) => AuthenticationProvider()
+                      .Validate(value, "Please enter your Password"),
                   isHidden: true,
                   controller: passwordController,
                   labelText: "Password",

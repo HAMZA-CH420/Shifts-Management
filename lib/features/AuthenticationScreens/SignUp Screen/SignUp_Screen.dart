@@ -6,9 +6,10 @@ import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
+import 'package:shifts_management/features/AuthenticationScreens/viewModel/AuthProvider.dart';
 
 class SignupScreen extends StatefulWidget {
-  SignupScreen({super.key});
+  const SignupScreen({super.key});
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();
@@ -24,6 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
   TextEditingController numberController = TextEditingController();
 
   bool isChanged = false;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -41,126 +43,140 @@ class _SignupScreenState extends State<SignupScreen> {
           horizontal: 20,
         ),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(58),
-                child: SvgPicture.asset(
-                  height: 120,
-                  width: 120,
-                  "assets/images/Logo1.svg",
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(58),
+                  child: SvgPicture.asset(
+                    height: 120,
+                    width: 120,
+                    "assets/images/Logo1.svg",
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomTextfield(
-                controller: usernameController,
-                labelText: "Username",
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomTextfield(
-                  labelText: isChanged ? "Phone Number" : "Email",
-                  controller: isChanged ? numberController : emailController),
-              const SizedBox(
-                height: 20,
-              ),
-              CustomTextfield(
-                isHidden: true,
-                controller: passwordController,
-                labelText: "Password",
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 7),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Already have an account?"),
-                    const SizedBox(
-                      width: 3,
-                    ),
-                    InkWell(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            )),
-                        child: const Text(
-                          "Login",
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomTextfield(
+                  validator: (value) => AuthenticationProvider()
+                      .Validate(value, "Please enter your username"),
+                  controller: usernameController,
+                  labelText: "Username",
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomTextfield(
+                    validator: (value) => AuthenticationProvider().Validate(
+                        value,
+                        isChanged
+                            ? "Please enter your Phone Number"
+                            : "Please enter your Email"),
+                    labelText: isChanged ? "Phone Number" : "Email",
+                    controller: isChanged ? numberController : emailController),
+                const SizedBox(
+                  height: 20,
+                ),
+                CustomTextfield(
+                  validator: (value) => AuthenticationProvider()
+                      .Validate(value, "Please enter your Password"),
+                  isHidden: true,
+                  controller: passwordController,
+                  labelText: "Password",
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 7),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Already have an account?"),
+                      const SizedBox(
+                        width: 3,
+                      ),
+                      InkWell(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const LoginScreen(),
+                              )),
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(
+                                color: Palate.primaryColor,
+                                fontWeight: FontWeight.w600),
+                          ))
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                CustomButton(
+                  onTap: () async {
+                    if (_formKey.currentState!.validate()) {
+                      await createUserWithEmailAndPassword();
+                    }
+                  },
+                  btnName: "Get Otp",
+                  btnColor: Palate.primaryColor,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomButton(
+                  onTap: () {
+                    setState(() {
+                      isChanged = !isChanged;
+                    });
+                  },
+                  btnColor: Colors.transparent,
+                  btnname: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        isChanged ? Icons.phone : Icons.mail,
+                        color: Palate.primaryColor,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                          isChanged
+                              ? "Continue with Email"
+                              : "Continue with PhoneNumber",
+                          style: const TextStyle(
+                              color: Palate.primaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400)),
+                    ],
+                  ),
+                ).outlinedBtn(),
+                const SizedBox(
+                  height: 15,
+                ),
+                CustomButton(
+                  onTap: () => signInWithGoogle,
+                  btnColor: Colors.transparent,
+                  btnname: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/images/google.svg",
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text("Continue with Google",
                           style: TextStyle(
                               color: Palate.primaryColor,
-                              fontWeight: FontWeight.w600),
-                        ))
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              CustomButton(
-                onTap: () async {
-                  await createUserWithEmailAndPassword();
-                },
-                btnName: "Get Otp",
-                btnColor: Palate.primaryColor,
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              CustomButton(
-                onTap: () {
-                  setState(() {
-                    isChanged = !isChanged;
-                  });
-                },
-                btnColor: Colors.transparent,
-                btnname: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      isChanged ? Icons.phone : Icons.mail,
-                      color: Palate.primaryColor,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                        isChanged
-                            ? "Continue with Email"
-                            : "Continue with PhoneNumber",
-                        style: const TextStyle(
-                            color: Palate.primaryColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
-                  ],
-                ),
-              ).outlinedBtn(),
-              const SizedBox(
-                height: 15,
-              ),
-              CustomButton(
-                onTap: () => signInWithGoogle,
-                btnColor: Colors.transparent,
-                btnname: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(
-                      "assets/images/google.svg",
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Text("Continue with Google",
-                        style: TextStyle(
-                            color: Palate.primaryColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400)),
-                  ],
-                ),
-              ).outlinedBtn(),
-            ],
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400)),
+                    ],
+                  ),
+                ).outlinedBtn(),
+              ],
+            ),
           ),
         ),
       ),
@@ -177,11 +193,11 @@ class _SignupScreenState extends State<SignupScreen> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => LoginScreen(),
+              builder: (context) => const LoginScreen(),
             ));
       } on FirebaseAuthException catch (e) {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("$e")));
+            .showSnackBar(const SnackBar(content: Text("User Already Exists")));
       }
     } else {
       FirebaseAuth.instance.verifyPhoneNumber(
@@ -202,7 +218,7 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   void signInWithGoogle() {
-    GoogleAuthProvider _signWithGoogle = GoogleAuthProvider();
-    FirebaseAuth.instance.signInWithProvider(_signWithGoogle);
+    GoogleAuthProvider signWithGoogle = GoogleAuthProvider();
+    FirebaseAuth.instance.signInWithProvider(signWithGoogle);
   }
 }
