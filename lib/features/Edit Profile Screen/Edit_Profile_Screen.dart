@@ -34,8 +34,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.arrow_back_sharp)),
-        title: Text(
+            icon: const Icon(Icons.arrow_back_sharp)),
+        title: const Text(
           "Edit Profile",
           style: TextStyle(fontSize: 22),
         ),
@@ -50,7 +50,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 height: 20,
               ),
               Stack(children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: AssetImage("assets/images/Avatar.png"),
                   radius: 50,
                 ),
@@ -101,10 +101,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   Navigator.pushReplacement(
                     context,
                     PageTransition(
-                        child: BottomNavbar(),
+                        child: const BottomNavbar(),
                         curve: Curves.elasticOut,
                         type: PageTransitionType.bottomToTop,
-                        duration: Duration(milliseconds: 500)),
+                        duration: const Duration(milliseconds: 500)),
                   );
                 },
                 btnName: "update",

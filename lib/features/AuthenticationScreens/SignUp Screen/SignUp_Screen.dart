@@ -7,6 +7,7 @@ import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
 import 'package:shifts_management/features/AuthenticationScreens/viewModel/AuthProvider.dart';
+import 'package:shifts_management/features/Model/Authentication%20Services/Authentication_Services.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -157,7 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: 15,
                 ),
                 CustomButton(
-                  onTap: () => signInWithGoogle,
+                  onTap: () => AuthenticationServices().signInWithGoogle(),
                   btnColor: Colors.transparent,
                   btnname: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -216,10 +217,5 @@ class _SignupScreenState extends State<SignupScreen> {
           },
           codeAutoRetrievalTimeout: (String verificationId) {});
     }
-  }
-
-  void signInWithGoogle() {
-    GoogleAuthProvider signWithGoogle = GoogleAuthProvider();
-    FirebaseAuth.instance.signInWithProvider(signWithGoogle);
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_SearchBar.dart';
+import 'package:shifts_management/features/Model/Notification%20Services/Notification_Services.dart';
 
 class ChatHomeScreen extends StatefulWidget {
   const ChatHomeScreen({super.key});
@@ -19,13 +20,18 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          actions: const [
-            Icon(
-              Iconsax.notification,
-              size: 25,
-              color: Palate.PrimaryTextColor,
+          actions: [
+            InkWell(
+              onTap: () {
+                NotificationServices().notificationPermission();
+              },
+              child: const Icon(
+                Iconsax.notification,
+                size: 25,
+                color: Palate.PrimaryTextColor,
+              ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 11,
             ),
           ],

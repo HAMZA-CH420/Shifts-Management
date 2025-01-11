@@ -1,12 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/SignUp_Screen.dart';
 import 'package:shifts_management/features/AuthenticationScreens/viewModel/AuthProvider.dart';
+import 'package:shifts_management/features/Model/Authentication%20Services/Authentication_Services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -19,7 +18,8 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController usernameController = TextEditingController();
 
   TextEditingController passwordController = TextEditingController();
-  var _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+  AuthenticationServices authService = AuthenticationServices();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => SignupScreen(),
+                                  builder: (context) => const SignupScreen(),
                                 )),
                             child: const Text(
                               "SignUp",
@@ -93,7 +93,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomButton(
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        await loginUserWithCredentials();
+                        await authService.loginUserWithCredentials(
+                            context,
+                            usernameController.text.trim(),
+                            passwordController.text.trim());
                       }
                     },
                     btnName: "Login",
@@ -108,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   CustomButton(
-                    onTap: () => signInWithGoogle,
+                    onTap: () => authService.signInWithGoogle(),
                     btnColor: Colors.transparent,
                     btnname: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -134,28 +137,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> loginUserWithCredentials() async {
-    try {
-      final userCredentials = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: usernameController.text.trim(),
-              password: passwordController.text.trim());
-      var pref = await SharedPreferences.getInstance();
-      pref.setBool("isLoggedIn", false);
-    } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Invalid username or password!")));
-    }
-  }
-
-  void signInWithGoogle() {
-    try {
-      GoogleAuthProvider googleProvider = GoogleAuthProvider();
-      FirebaseAuth.instance.signInWithProvider(googleProvider);
-    } catch (error) {
-      print(error);
-    }
   }
 }

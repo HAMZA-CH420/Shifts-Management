@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class CustomTextfield extends StatelessWidget {
-  CustomTextfield(
+  const CustomTextfield(
       {super.key,
       required this.labelText,
       required this.controller,
@@ -28,15 +28,15 @@ class CustomTextfield extends StatelessWidget {
             validator: validator,
             controller: controller,
             obscureText: isHidden,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Palate.TextFieldTextColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w400),
             decoration: InputDecoration(
               suffixText: suffixText,
-              suffixStyle: TextStyle(color: Colors.green, fontSize: 12),
+              suffixStyle: const TextStyle(color: Colors.green, fontSize: 12),
               border: InputBorder.none,
-              labelStyle: TextStyle(color: Palate.labelColor),
+              labelStyle: const TextStyle(color: Palate.labelColor),
               labelText: labelText,
             ),
           ),
