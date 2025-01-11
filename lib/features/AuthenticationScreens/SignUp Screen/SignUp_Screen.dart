@@ -60,7 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 CustomTextfield(
                   validator: (value) => AuthenticationProvider()
-                      .Validate(value, "Please enter your username"),
+                      .emailValidate(value, "Please enter your username"),
                   controller: usernameController,
                   labelText: "Username",
                 ),
@@ -68,11 +68,12 @@ class _SignupScreenState extends State<SignupScreen> {
                   height: 20,
                 ),
                 CustomTextfield(
-                    validator: (value) => AuthenticationProvider().Validate(
-                        value,
-                        isChanged
-                            ? "Please enter your Phone Number"
-                            : "Please enter your Email"),
+                    validator: (value) => AuthenticationProvider()
+                        .emailValidate(
+                            value,
+                            isChanged
+                                ? "Please enter your Phone Number"
+                                : "Please enter your Email"),
                     labelText: isChanged ? "Phone Number" : "Email",
                     controller: isChanged ? numberController : emailController),
                 const SizedBox(
@@ -80,7 +81,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 CustomTextfield(
                   validator: (value) => AuthenticationProvider()
-                      .Validate(value, "Please enter your Password"),
+                      .passwordValidate(value, "Please enter your Password"),
                   isHidden: true,
                   controller: passwordController,
                   labelText: "Password",
@@ -118,7 +119,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       await createUserWithEmailAndPassword();
                     }
                   },
-                  btnName: "Get Otp",
+                  btnName: isChanged ? "Get Otp" : "SignUp",
                   btnColor: Palate.primaryColor,
                 ),
                 const SizedBox(

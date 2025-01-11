@@ -23,106 +23,112 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(58),
-                  child: SvgPicture.asset(
-                    height: 120,
-                    width: 120,
-                    "assets/images/Logo1.svg",
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        body: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(58),
+                    child: SvgPicture.asset(
+                      height: 120,
+                      width: 120,
+                      "assets/images/Logo1.svg",
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomTextfield(
-                  validator: (value) => AuthenticationProvider()
-                      .Validate(value, "Please enter your username"),
-                  controller: usernameController,
-                  labelText: "Username",
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomTextfield(
-                  validator: (value) => AuthenticationProvider()
-                      .Validate(value, "Please enter your Password"),
-                  isHidden: true,
-                  controller: passwordController,
-                  labelText: "Password",
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 7),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account?"),
-                      const SizedBox(
-                        width: 3,
-                      ),
-                      InkWell(
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignupScreen(),
-                              )),
-                          child: const Text(
-                            "SignUp",
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextfield(
+                    validator: (value) => AuthenticationProvider()
+                        .emailValidate(value, "Please enter your username"),
+                    controller: usernameController,
+                    labelText: "Username or Email or Mobile",
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomTextfield(
+                    validator: (value) => AuthenticationProvider()
+                        .passwordValidate(value, "Please enter your Password"),
+                    isHidden: true,
+                    controller: passwordController,
+                    labelText: "Password",
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 7),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account?"),
+                        const SizedBox(
+                          width: 3,
+                        ),
+                        InkWell(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignupScreen(),
+                                )),
+                            child: const Text(
+                              "SignUp",
+                              style: TextStyle(
+                                  color: Palate.primaryColor,
+                                  fontWeight: FontWeight.w600),
+                            ))
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 23,
+                  ),
+                  CustomButton(
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {
+                        await loginUserWithCredentials();
+                      }
+                    },
+                    btnName: "Login",
+                    btnColor: Palate.primaryColor,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      "or",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                  CustomButton(
+                    onTap: () => signInWithGoogle,
+                    btnColor: Colors.transparent,
+                    btnname: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          "assets/images/google.svg",
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Text("Continue with Google",
                             style: TextStyle(
                                 color: Palate.primaryColor,
-                                fontWeight: FontWeight.w600),
-                          ))
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 23,
-                ),
-                CustomButton(
-                  onTap: () async {
-                    if (_formKey.currentState!.validate()) {
-                      await loginUserWithCredentials();
-                    }
-                  },
-                  btnName: "Login",
-                  btnColor: Palate.primaryColor,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "or",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
-                  ),
-                ),
-                CustomButton(
-                  onTap: () => signInWithGoogle,
-                  btnColor: Colors.transparent,
-                  btnname: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                        "assets/images/google.svg",
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Text("Continue with Google",
-                          style: TextStyle(
-                              color: Palate.primaryColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400)),
-                    ],
-                  ),
-                ).outlinedBtn()
-              ],
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400)),
+                      ],
+                    ),
+                  ).outlinedBtn()
+                ],
+              ),
             ),
           ),
         ),
