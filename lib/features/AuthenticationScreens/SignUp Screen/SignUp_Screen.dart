@@ -198,8 +198,9 @@ class _SignupScreenState extends State<SignupScreen> {
               builder: (context) => const LoginScreen(),
             ));
       } on FirebaseAuthException catch (e) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("User Already Exists")));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("User Already Exists"),
+        ));
       }
     } else {
       FirebaseAuth.instance.verifyPhoneNumber(
