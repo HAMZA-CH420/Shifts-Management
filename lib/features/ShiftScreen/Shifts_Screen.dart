@@ -23,7 +23,7 @@ class ShiftsScreen extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       builder: (context) {
-                        return BottomSheetFilter();
+                        return const BottomSheetFilter();
                       },
                     );
                   },
@@ -68,7 +68,7 @@ class ShiftsScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             MyShifts(),
             CreatedShifts(),
