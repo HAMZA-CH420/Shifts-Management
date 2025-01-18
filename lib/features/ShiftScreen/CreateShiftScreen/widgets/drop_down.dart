@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 class DropDownCategoryWidget extends StatelessWidget {
   DropDownCategoryWidget({super.key, this.onTap});
@@ -31,7 +33,7 @@ class DropDownCategoryWidget extends StatelessWidget {
                 color: Palate.shiftTileBannerColor,
                 fontSize: 15,
                 fontWeight: FontWeight.w500),
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_drop_down,
               color: Palate.primaryColor,
             ),
@@ -51,7 +53,9 @@ class DropDownCategoryWidget extends StatelessWidget {
                 child: Text(categories),
               );
             }).toList(),
-            onChanged: (value) {}),
+            onChanged: (value) {
+              context.read<ShiftProvider>().addCategory(value!);
+            }),
       ),
     );
   }

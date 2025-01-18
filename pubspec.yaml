@@ -54,6 +54,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.2
   app_settings: ^5.1.1
   firebase_messaging: ^15.2.0
+  intl: ^0.20.1
 
 
 dev_dependencies:
