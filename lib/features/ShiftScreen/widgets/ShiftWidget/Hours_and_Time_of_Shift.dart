@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class HoursAndTimeOfShift extends StatelessWidget {
-  HoursAndTimeOfShift(
+  const HoursAndTimeOfShift(
       {super.key,
       required this.duration,
       required this.startingTime,
       required this.endingTime});
-  final String duration, startingTime, endingTime;
+  final String startingTime, endingTime;
+  final int duration;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -23,10 +24,10 @@ class HoursAndTimeOfShift extends StatelessWidget {
               )),
           child: Center(
             child: Text(
-              duration,
+              "${duration}hrs",
               style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 15,
+                  fontSize: 13,
                   fontWeight: FontWeight.w500),
             ),
           ),

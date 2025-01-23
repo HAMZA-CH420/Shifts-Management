@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StatusOfShift extends StatelessWidget {
-  StatusOfShift({super.key, required this.status});
+  const StatusOfShift({super.key, required this.status});
   final String status;
   @override
   Widget build(BuildContext context) {

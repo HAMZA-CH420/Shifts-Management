@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class CustomShiftIcon extends StatelessWidget {
-  CustomShiftIcon({super.key, required this.icon});
+  const CustomShiftIcon({super.key, required this.icon});
   final Widget icon;
   @override
   Widget build(BuildContext context) {

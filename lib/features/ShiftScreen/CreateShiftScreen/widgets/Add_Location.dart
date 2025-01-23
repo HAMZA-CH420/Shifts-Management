@@ -34,7 +34,7 @@ class AddLocation extends StatelessWidget {
             ),
             border: InputBorder.none,
           ),
-          onTap: () {
+          onChanged: (value) {
             context
                 .read<ShiftProvider>()
                 .addLocation(controller.text.toString());

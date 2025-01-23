@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 class DescriptionWidget extends StatelessWidget {
-  DescriptionWidget({super.key, required this.controller});
-  final TextEditingController controller;
+  DescriptionWidget({super.key});
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -24,6 +26,11 @@ class DescriptionWidget extends StatelessWidget {
             hintStyle:
                 TextStyle(color: Palate.shiftTileBannerColor, fontSize: 15),
           ),
+          onTap: () {
+            context
+                .read<ShiftProvider>()
+                .addDescription(controller.text.toString());
+          },
         ),
       ),
     );

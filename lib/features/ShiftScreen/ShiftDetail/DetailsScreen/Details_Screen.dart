@@ -7,7 +7,12 @@ import 'package:shifts_management/features/ShiftScreen/ShiftDetail/DetailsScreen
 import '../../../../UiHelpers/theme/Color_Palate.dart';
 
 class DetailsScreen extends StatelessWidget {
-  const DetailsScreen({super.key});
+  const DetailsScreen(
+      {super.key,
+      required this.date,
+      required this.category,
+      required this.location});
+  final String date, category, location;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,7 @@ class DetailsScreen extends StatelessWidget {
                 CustomCollectionWidget(
                   title: "Date",
                   icon: Icons.calendar_month_sharp,
-                  time: "24 May",
+                  time: date,
                 ),
                 CustomCollectionWidget(
                   title: "Break",
@@ -53,29 +58,35 @@ class DetailsScreen extends StatelessWidget {
                 CustomCollectionWidget(
                   title: "Category",
                   icon: Icons.filter_tilt_shift_outlined,
-                  time: "Plumber",
+                  time: category,
                 ),
               ],
             ),
             CustomCollectionWidget(
               title: "Location",
               icon: Icons.location_on,
-              time: "30 Ulomogo Street,Tongi",
+              time: location,
             ),
             const AssignedWidget(),
-            const Text(
-              " Details:",
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const Text(
-              " We have an exciting house cleaning job opportunity for you. Responsibilities include dusting, vacuuming, mopping, sanitizing.",
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Palate.TextFieldTextColor),
+            const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 10,
+              children: [
+                Text(
+                  " Details:",
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  " We have an exciting house cleaning job opportunity for you. Responsibilities include dusting, vacuuming, mopping, sanitizing.",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                      color: Palate.TextFieldTextColor),
+                ),
+              ],
             ),
             CustomButtonShift(
               onTap: () {},

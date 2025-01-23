@@ -15,13 +15,8 @@ class CustomShiftWidget extends StatelessWidget {
       required this.location,
       required this.category,
       required this.status});
-  final String date,
-      duration,
-      startingTime,
-      endingTime,
-      location,
-      category,
-      status;
+  final String date, startingTime, endingTime, location, category, status;
+  final int duration;
   @override
   Widget build(BuildContext context) {
     return Padding(

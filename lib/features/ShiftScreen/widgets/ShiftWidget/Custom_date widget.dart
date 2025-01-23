@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class CustomDateBox extends StatelessWidget {
-  CustomDateBox({super.key, required this.title, required this.value});
+  const CustomDateBox({super.key, required this.title, required this.value});
   final String title;
   final String value;
   @override

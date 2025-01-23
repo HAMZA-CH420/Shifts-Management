@@ -3,14 +3,14 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_Shift_Icon.dart';
 
 class TypeOfShift extends StatelessWidget {
-  TypeOfShift({super.key, required this.category});
+  const TypeOfShift({super.key, required this.category});
   final String category;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomShiftIcon(
-            icon: const ImageIcon(
+        const CustomShiftIcon(
+            icon: ImageIcon(
           AssetImage("assets/icons/Type.png"),
           color: Palate.primaryColor,
         )),

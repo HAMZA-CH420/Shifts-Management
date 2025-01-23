@@ -8,8 +8,16 @@ import 'package:shifts_management/features/ShiftScreen/ShiftDetail/Widgets/Custo
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Status_of_Shift.dart';
 
 class ShiftDetail extends StatefulWidget {
-  ShiftDetail({super.key, required this.status});
-  final String status;
+  const ShiftDetail({
+    super.key,
+    required this.status,
+    required this.isOngoing,
+    required this.date,
+    required this.category,
+    required this.location,
+  });
+  final String status, date, category, location;
+  final bool isOngoing;
   @override
   State<ShiftDetail> createState() => _ShiftDetailState();
 }
@@ -18,36 +26,38 @@ class _ShiftDetailState extends State<ShiftDetail> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          Future.delayed(const Duration(seconds: 2), () {
-            Navigator.pop(context);
-          });
-          return Container(
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(25)),
-            height: 300,
-            width: double.infinity,
-            child: Column(
-              spacing: 30,
-              children: [
-                const Text(
-                  "Remaining time",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
-                ),
-                Image.asset("assets/images/clock.png"),
-                const Text(
-                  "Hurry up only 15min are left",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                )
-              ],
-            ),
-          );
-        },
-      );
-    });
+    if (widget.isOngoing) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            Future.delayed(const Duration(seconds: 2), () {
+              Navigator.pop(context);
+            });
+            return Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(25)),
+              height: 300,
+              width: double.infinity,
+              child: Column(
+                spacing: 30,
+                children: [
+                  const Text(
+                    "Remaining time",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                  Image.asset("assets/images/clock.png"),
+                  const Text(
+                    "Hurry up only 15min are left",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
+            );
+          },
+        );
+      });
+    }
   }
 
   @override
@@ -109,10 +119,14 @@ class _ShiftDetailState extends State<ShiftDetail> {
             ),
           ),
         ),
-        body: const TabBarView(
+        body: TabBarView(
           children: [
-            DetailsScreen(),
-            ActivityScreen(),
+            DetailsScreen(
+              date: widget.date,
+              location: widget.location,
+              category: widget.category,
+            ),
+            const ActivityScreen(),
           ],
         ),
       ),

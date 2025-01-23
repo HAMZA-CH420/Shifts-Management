@@ -36,6 +36,11 @@ class MyShifts extends StatelessWidget {
                       context,
                       PageTransition(
                           child: ShiftDetail(
+                              category: snapshot.data!.docs[index]["category"],
+                              location: snapshot.data!.docs[index]["location"],
+                              date: snapshot.data!.docs[index]["date"],
+                              isOngoing: snapshot.data!.docs[index]["status"] ==
+                                  "Ongoing",
                               status: snapshot.data!.docs[index]["status"]),
                           type: PageTransitionType.rightToLeft));
                 },
