@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 class AddLocation extends StatelessWidget {
-  const AddLocation({super.key, required this.controller});
-  final TextEditingController controller;
+  AddLocation({super.key});
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,11 @@ class AddLocation extends StatelessWidget {
             ),
             border: InputBorder.none,
           ),
+          onTap: () {
+            context
+                .read<ShiftProvider>()
+                .addLocation(controller.text.toString());
+          },
         ),
       ),
     );

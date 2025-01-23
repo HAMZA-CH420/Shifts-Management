@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class DateOfShift extends StatelessWidget {
-  DateOfShift({super.key, required this.date});
+  const DateOfShift({super.key, required this.date});
   final String date;
   @override
   Widget build(BuildContext context) {
@@ -16,10 +16,10 @@ class DateOfShift extends StatelessWidget {
       child: Center(
           child: Text(
         date,
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w500,
-            color: Palate.shiftTextColor),
+            color: Palate.primaryColor),
       )),
     );
   }

@@ -14,8 +14,8 @@ class BottomNavbar extends StatefulWidget {
 
 class _BottomNavbarState extends State<BottomNavbar>
     with TickerProviderStateMixin {
-  List<AnimationController> _animationControllers = [];
-  List<Animation<double>> _animations = [];
+  final List<AnimationController> _animationControllers = [];
+  final List<Animation<double>> _animations = [];
 
   @override
   void initState() {
@@ -78,7 +78,7 @@ class _BottomNavbarState extends State<BottomNavbar>
           Navigator.push(
               context,
               PageTransition(
-                  child: CreateShiftScreen(),
+                  child: const CreateShiftScreen(),
                   type: PageTransitionType.bottomToTop));
         },
         shape: const CircleBorder(),

@@ -14,4 +14,32 @@ class ShiftProvider extends ChangeNotifier {
   void addDate(String value) {
     _dateOfShift = value;
   }
+
+// get starting time of the shift
+  late String _startTime;
+  String get startTime => _startTime;
+  void addStartTime(String value) {
+    _startTime = value;
+  }
+
+// get ending time of the shift
+  late String _endTime;
+  String get endTime => _endTime;
+  void addEndTime(String value) {
+    _endTime = value;
+  }
+
+// get location of the shift
+  late String _location;
+  String get location => _location;
+  void addLocation(String value) {
+    _location = value;
+  }
+
+  // get Status of the Shift
+  late String _status;
+  String get status => _status;
+  void addStatus(String value) {
+    _status = value;
+  }
 }
