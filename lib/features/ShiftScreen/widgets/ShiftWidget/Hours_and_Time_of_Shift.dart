@@ -27,14 +27,14 @@ class HoursAndTimeOfShift extends StatelessWidget {
               "${duration}hrs",
               style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: FontWeight.w500),
             ),
           ),
         ),
         Container(
           height: 28,
-          width: 110,
+          width: 140,
           decoration: const BoxDecoration(
               color: Palate.navBarColor,
               borderRadius: BorderRadius.only(
