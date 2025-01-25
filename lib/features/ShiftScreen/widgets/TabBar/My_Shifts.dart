@@ -15,7 +15,7 @@ class MyShifts extends StatelessWidget {
         vertical: 20,
       ),
       child: FutureBuilder(
-        future: FirebaseFirestore.instance.collection("Shifts").get(),
+        future: FirebaseFirestore.instance.collection("CreatedShifts").get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(

@@ -93,30 +93,15 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
             var data = context.read<ShiftProvider>();
             var methode = FirebaseFirestore.instance;
             duration(context);
-            if (data.category != null &&
-                data.dateOfShift != null &&
-                data.startTime != null &&
-                data.endTime != null &&
-                data.location != null &&
-                data.status != null) {
-              methode.collection("Shifts").add({
-                "category": data.category,
-                "date": data.dateOfShift,
-                "duration": data.duration,
-                "starting time": data.startTime,
-                "ending time": data.endTime,
-                "location": data.location,
-                "status": data.status,
-              });
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  backgroundColor: Colors.red,
-                  duration: Duration(seconds: 1),
-                  shape: RoundedRectangleBorder(),
-                  showCloseIcon: true,
-                  content: Text('Please fill all the required fields')));
-            }
+            methode.collection("CreatedShifts").add({
+              "category": data.category,
+              "date": data.dateOfShift,
+              "duration": data.duration,
+              "starting time": data.startTime,
+              "ending time": data.endTime,
+              "location": data.location,
+              "status": data.status,
+            });
             Navigator.pop(context);
           },
           color: Palate.navBarColor,

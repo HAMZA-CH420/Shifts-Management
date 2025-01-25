@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_TextField.dart';
 import 'package:shifts_management/features/AuthenticationScreens/Login%20Screen/Login_Screen.dart';
-import 'package:shifts_management/features/AuthenticationScreens/SignUp%20Screen/Otp%20Screen/Otp_Screen.dart';
 import 'package:shifts_management/features/AuthenticationScreens/viewModel/AuthProvider.dart';
 import 'package:shifts_management/features/Model/Authentication%20Services/Authentication_Services.dart';
 
@@ -117,7 +115,13 @@ class _SignupScreenState extends State<SignupScreen> {
                 CustomButton(
                   onTap: () async {
                     if (_formKey.currentState!.validate()) {
-                      await createUserWithEmailAndPassword();
+                      await AuthenticationServices()
+                          .createUserWithEmailAndPassword(
+                              context,
+                              isChanged,
+                              emailController,
+                              passwordController,
+                              numberController);
                     }
                   },
                   btnName: isChanged ? "Get Otp" : "SignUp",
@@ -183,40 +187,5 @@ class _SignupScreenState extends State<SignupScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> createUserWithEmailAndPassword() async {
-    if (!isChanged) {
-      try {
-        final userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(
-                email: emailController.text.trim(),
-                password: passwordController.text.trim());
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const LoginScreen(),
-            ));
-      } on FirebaseAuthException catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("User Already Exists"),
-        ));
-      }
-    } else {
-      FirebaseAuth.instance.verifyPhoneNumber(
-          phoneNumber: numberController.text.toString(),
-          verificationCompleted: (PhoneAuthCredential credentials) {},
-          verificationFailed: (FirebaseAuthException ex) {},
-          codeSent: (String verificationId, int? resendToken) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => OtpScreen(
-                    verificationId: verificationId,
-                  ),
-                ));
-          },
-          codeAutoRetrievalTimeout: (String verificationId) {});
-    }
   }
 }
