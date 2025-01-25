@@ -121,7 +121,8 @@ class _SignupScreenState extends State<SignupScreen> {
                               isChanged,
                               emailController,
                               passwordController,
-                              numberController);
+                              numberController,
+                              usernameController.text.toString());
                     }
                   },
                   btnName: isChanged ? "Get Otp" : "SignUp",

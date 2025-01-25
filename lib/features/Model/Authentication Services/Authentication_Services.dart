@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -16,7 +17,7 @@ class AuthenticationServices {
       );
       var pref = await SharedPreferences.getInstance();
       pref.setBool("isLoggedIn", false);
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Invalid username or password!")));
     }
@@ -36,13 +37,22 @@ class AuthenticationServices {
       bool isChanged,
       emailController,
       passwordController,
-      numberController) async {
+      numberController,
+      String username) async {
     if (!isChanged) {
       try {
         UserCredential user = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: emailController.text.trim(),
                 password: passwordController.text.trim());
+        FirebaseFirestore.instance
+            .collection("users")
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .set({
+          "name": username,
+          "email": emailController,
+          "status": "Unavailable",
+        });
         Fluttertoast.showToast(
           msg: "User Created Successfully.",
           backgroundColor: Colors.green,
@@ -53,7 +63,7 @@ class AuthenticationServices {
             MaterialPageRoute(
               builder: (context) => const LoginScreen(),
             ));
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text("User Already Exists"),
         ));
