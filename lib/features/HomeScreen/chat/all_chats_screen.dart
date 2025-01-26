@@ -8,8 +8,7 @@ class AllChatsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12),
       child: ListView.builder(
         itemCount: 1,
@@ -47,6 +46,6 @@ class AllChatsScreen extends StatelessWidget {
           );
         },
       ),
-    ));
+    );
   }
 }

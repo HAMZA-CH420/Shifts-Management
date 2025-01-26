@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 PreferredSizeWidget appBar(BuildContext context) {
   return AppBar(
@@ -17,6 +18,7 @@ PreferredSizeWidget appBar(BuildContext context) {
         const Icon(
           Icons.account_circle,
           size: 40,
+          color: Palate.primaryColor,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
