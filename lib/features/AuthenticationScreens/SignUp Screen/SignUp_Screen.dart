@@ -59,7 +59,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 CustomTextfield(
                   validator: (value) => AuthenticationProvider()
-                      .emailValidate(value, "Please enter your username"),
+                      .usernameValidate(value, "Please enter your username"),
                   controller: usernameController,
                   labelText: "Username",
                 ),
@@ -119,10 +119,10 @@ class _SignupScreenState extends State<SignupScreen> {
                           .createUserWithEmailAndPassword(
                               context,
                               isChanged,
-                              emailController,
-                              passwordController,
-                              numberController,
-                              usernameController.text.toString());
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                              numberController.text.trim(),
+                              usernameController.text.toString().trim());
                     }
                   },
                   btnName: isChanged ? "Get Otp" : "SignUp",
@@ -142,7 +142,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        isChanged ? Icons.phone : Icons.mail,
+                        isChanged ? Icons.mail : Icons.phone,
                         color: Palate.primaryColor,
                       ),
                       const SizedBox(

@@ -20,7 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   AuthenticationServices authService = AuthenticationServices();
-  bool isClicked = false;
   @override
   void dispose() {
     usernameController.dispose();
@@ -97,24 +96,18 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 23,
                   ),
-                  isClicked
-                      ? const CircularProgressIndicator(
-                          color: Palate.primaryColor,
-                        )
-                      : CustomButton(
-                          onTap: () async {
-                            if (_formKey.currentState!.validate()) {
-                              await authService.loginUserWithCredentials(
-                                  context,
-                                  usernameController.text.trim(),
-                                  passwordController.text.trim());
-                              isClicked = true;
-                              setState(() {});
-                            }
-                          },
-                          btnName: "Login",
-                          btnColor: Palate.primaryColor,
-                        ),
+                  CustomButton(
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {
+                        await authService.loginUserWithCredentials(
+                            context,
+                            usernameController.text.trim(),
+                            passwordController.text.trim());
+                      }
+                    },
+                    btnName: "Login",
+                    btnColor: Palate.primaryColor,
+                  ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(

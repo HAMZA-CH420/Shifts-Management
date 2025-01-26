@@ -111,22 +111,46 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
     );
   }
 
+  int calculateDuration(String startTimeString, String endTimeString) {
+    // Assuming your time strings are in the format 'HH:mm' (24-hour format)
+    DateFormat format = DateFormat('HH:mm');
+
+    // Parse the strings into DateTime objects, using a dummy date
+    DateTime now = DateTime.now();
+    DateTime startTime = format.parse(startTimeString);
+    DateTime endTime = format.parse(endTimeString);
+
+    // Combine the parsed time with the current date
+    startTime = DateTime(
+        now.year, now.month, now.day, startTime.hour, startTime.minute);
+    endTime =
+        DateTime(now.year, now.month, now.day, endTime.hour, endTime.minute);
+
+    // Check if the end time is before the start time (crossing midnight)
+    if (endTime.isBefore(startTime)) {
+      // Add 24 hours to the end time to account for the day rollover
+      endTime = endTime.add(Duration(days: 1));
+    }
+
+    // Calculate the difference
+    Duration difference = endTime.difference(startTime);
+
+    // Get the number of hours
+    int totalHours = difference.inHours;
+
+    return totalHours;
+  }
+
   int duration(BuildContext context) {
     String startTimeString = context.read<ShiftProvider>().startTime;
     String endTimeString = context.read<ShiftProvider>().endTime;
 
-// Assuming your time strings are in the format 'HH:mm'
-    DateFormat format = DateFormat('HH:mm');
+    // Calculate the duration using the corrected function
+    int totalHours = calculateDuration(startTimeString, endTimeString);
 
-// Parse the strings into DateTime objects
-    DateTime startTime = format.parse(startTimeString);
-    DateTime endTime = format.parse(endTimeString);
+    // Update the provider
+    Provider.of<ShiftProvider>(context, listen: false).getDuration(totalHours);
 
-// Calculate the difference
-    Duration difference = endTime.difference(startTime);
-//Get number of hours
-    int totalHours = difference.inHours;
-    context.read<ShiftProvider>().getDuration(totalHours);
     return totalHours;
   }
 }

@@ -1,11 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
-class CustomSearchbar extends StatelessWidget {
+class CustomSearchbar extends StatefulWidget {
   const CustomSearchbar({super.key});
+
+  @override
+  State<CustomSearchbar> createState() => _CustomSearchbarState();
+}
+
+class _CustomSearchbarState extends State<CustomSearchbar> {
+  final TextEditingController searchController = TextEditingController();
+
+  late Map<String, dynamic> results;
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController searchController = TextEditingController();
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 15,
@@ -33,5 +43,19 @@ class CustomSearchbar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onSearch() {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    firestore
+        .collection("users")
+        .where("email", isEqualTo: searchController.text)
+        .get()
+        .then((value) {
+      setState(() {
+        results = value.docs[0].data();
+      });
+      print(results);
+    });
   }
 }

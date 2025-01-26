@@ -5,7 +5,7 @@ import 'package:shifts_management/features/IntroScreens/Introduction%20Screens/H
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class IntroScreensItems extends StatefulWidget {
-  IntroScreensItems({super.key});
+  const IntroScreensItems({super.key});
 
   @override
   State<IntroScreensItems> createState() => _IntroScreensItemsState();
@@ -17,7 +17,7 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
 
   @override
   Widget build(BuildContext context) {
-    List<IntroItemsInfo> Items = [
+    List<IntroItemsInfo> items = [
       IntroItemsInfo(
           title: "Create and Assign Shifts Effortlessly",
           desc:
@@ -35,93 +35,89 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
     return Scaffold(
       body: PageView.builder(
         onPageChanged: (index) {
-          isLastPage = Items.length - 1 == index;
+          isLastPage = items.length - 1 == index;
           setState(() {});
         },
         controller: pageController,
-        itemCount: Items.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
-          return Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Items[index].image,
-                const SizedBox(
-                  height: 40,
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              items[index].image,
+              const SizedBox(
+                height: 40,
+              ),
+              Text(
+                textAlign: TextAlign.center,
+                items[index].title,
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.w300,
                 ),
-                Text(
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
+                child: Text(
+                  items[index].desc,
                   textAlign: TextAlign.center,
-                  Items[index].title,
                   style: const TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w300,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 18),
-                  child: Text(
-                    Items[index].desc,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           );
         },
       ),
-      bottomSheet: Container(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: isLastPage
-              ? getStarted()
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                        onPressed: () => pageController.animateToPage(
-                              Items.length - 1,
-                              duration: Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            ),
-                        child: Text(
-                          "Skip",
-                          style:
-                              TextStyle(color: Color(0XFF00629D), fontSize: 18),
-                        )),
-                    SmoothPageIndicator(
-                      controller: pageController,
-                      count: Items.length,
-                      effect: WormEffect(
-                          dotWidth: 10,
-                          dotHeight: 10,
-                          activeDotColor: Color(0XFF00629D)),
-                    ),
-                    Row(
-                      children: [
-                        TextButton(
-                            onPressed: () => pageController.nextPage(
-                                duration: Duration(milliseconds: 300),
-                                curve: Curves.easeInOut),
-                            child: Text(
-                              "Next",
-                              style: TextStyle(
-                                  color: Color(0XFF00629D), fontSize: 18),
-                            )),
-                        Icon(
-                          Icons.arrow_forward_ios_sharp,
-                          size: 19,
-                          color: Color(0XFF00629D),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-        ),
+      bottomSheet: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        child: isLastPage
+            ? getStarted()
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                      onPressed: () => pageController.animateToPage(
+                            items.length - 1,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          ),
+                      child: const Text(
+                        "Skip",
+                        style:
+                            TextStyle(color: Color(0XFF00629D), fontSize: 18),
+                      )),
+                  SmoothPageIndicator(
+                    controller: pageController,
+                    count: items.length,
+                    effect: const WormEffect(
+                        dotWidth: 10,
+                        dotHeight: 10,
+                        activeDotColor: Color(0XFF00629D)),
+                  ),
+                  Row(
+                    children: [
+                      TextButton(
+                          onPressed: () => pageController.nextPage(
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut),
+                          child: const Text(
+                            "Next",
+                            style: TextStyle(
+                                color: Color(0XFF00629D), fontSize: 18),
+                          )),
+                      const Icon(
+                        Icons.arrow_forward_ios_sharp,
+                        size: 19,
+                        color: Color(0XFF00629D),
+                      )
+                    ],
+                  ),
+                ],
+              ),
       ),
     );
   }
@@ -140,12 +136,12 @@ class _IntroScreensItemsState extends State<IntroScreensItems> {
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,
                 shadowColor: Colors.transparent,
-                shape: RoundedRectangleBorder()),
+                shape: const RoundedRectangleBorder()),
             onPressed: () async {
               Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()));
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
             },
-            child: Text(
+            child: const Text(
               "Get Started",
               style: TextStyle(color: Colors.white),
             )),
