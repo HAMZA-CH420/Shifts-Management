@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class CustomSearchbar extends StatefulWidget {
@@ -10,9 +13,16 @@ class CustomSearchbar extends StatefulWidget {
 }
 
 class _CustomSearchbarState extends State<CustomSearchbar> {
+  late List<Map<String, dynamic>> results;
   final TextEditingController searchController = TextEditingController();
-
-  late Map<String, dynamic> results;
+  bool isLoading = false;
+  Timer? _debounce;
+  @override
+  void dispose() {
+    searchController.dispose();
+    _debounce?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,23 +49,49 @@ class _CustomSearchbarState extends State<CustomSearchbar> {
               hintStyle: TextStyle(color: Palate.PrimaryTextColor),
               border: InputBorder.none,
             ),
+            onChanged: (value) {
+              if (_debounce?.isActive ?? false) _debounce?.cancel();
+              _debounce = Timer(const Duration(milliseconds: 500), () {
+                onSearch(value);
+              });
+            },
           ),
         ),
       ),
     );
   }
 
-  void onSearch() {
+  void onSearch(String value) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
-    firestore
-        .collection("users")
-        .where("email", isEqualTo: searchController.text)
-        .get()
-        .then((value) {
+    if (value.isEmpty) {
       setState(() {
-        results = value.docs[0].data();
+        results = [];
       });
-      print(results);
+      return;
+    }
+    setState(() {
+      isLoading = true;
     });
+    try {
+      QuerySnapshot querySnapshot = await firestore
+          .collection("users")
+          .where("username", isEqualTo: searchController.text)
+          .get();
+      setState(() {
+        results = querySnapshot.docs
+            .map((doc) => doc.data() as Map<String, dynamic>)
+            .toList();
+      });
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: "An unexpected error happened",
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+      );
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
   }
 }

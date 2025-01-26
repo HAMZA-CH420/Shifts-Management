@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -15,6 +16,12 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Iconsax.notification)),
+          IconButton(
+              onPressed: () async => await FirebaseAuth.instance.signOut(),
+              icon: const Icon(
+                Iconsax.logout,
+                color: Colors.red,
+              )),
         ],
         title: const Text(
           "Profile",
