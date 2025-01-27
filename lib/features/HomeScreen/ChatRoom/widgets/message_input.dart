@@ -14,6 +14,7 @@ class MessageInput extends StatelessWidget {
           Material(
             elevation: 1.5,
             child: Container(
+              alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               height: 55,
               width: 310,

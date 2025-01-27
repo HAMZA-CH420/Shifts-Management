@@ -78,9 +78,9 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
               ),
             ),
           ),
-          body: const TabBarView(children: [
+          body: TabBarView(children: [
             AllChatsScreen(),
-            AllGroupsScreen(),
+            const AllGroupsScreen(),
           ]),
         ),
       ),
