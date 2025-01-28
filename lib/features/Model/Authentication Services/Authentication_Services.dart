@@ -61,12 +61,18 @@ class AuthenticationServices {
     }
   }
 
-  Future<void> createUserWithEmailAndPassword(BuildContext context,
-      bool isChanged, email, password, number, username) async {
+  Future<void> createUserWithEmailAndPassword(
+      BuildContext context,
+      bool isChanged,
+      String email,
+      String password,
+      number,
+      String username) async {
     if (!isChanged) {
       try {
         await auth.createUserWithEmailAndPassword(
             email: email, password: password);
+        auth.currentUser?.updateProfile(displayName: username);
         firestore.collection("users").doc(auth.currentUser!.uid).set({
           "username": username,
           "email": email,

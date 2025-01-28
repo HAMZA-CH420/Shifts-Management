@@ -44,4 +44,31 @@ class ChatProvider extends ChangeNotifier {
       // Handle the error appropriately, e.g., show an error message to the user
     }
   }
+
+  /// Method to send message to another user
+  Future<void> onSendMessage(
+    String chatRoomId,
+    String sendBy,
+    String msg,
+  ) async {
+    if (msg.isNotEmpty) {
+      FirebaseFirestore firestore = FirebaseFirestore.instance;
+      Map<String, dynamic> message = {
+        "sendBy": sendBy,
+        "message": msg,
+        "time": FieldValue.serverTimestamp(),
+      };
+      try {
+        await firestore
+            .collection('chatroom')
+            .doc(chatRoomId)
+            .collection('chats')
+            .add(message);
+      } catch (e) {
+        debugPrint("Error sending message: $e");
+      }
+    } else {
+      debugPrint("Message is empty");
+    }
+  }
 }

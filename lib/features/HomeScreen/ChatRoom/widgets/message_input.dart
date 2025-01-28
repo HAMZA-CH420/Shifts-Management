@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
+import 'package:shifts_management/features/HomeScreen/viewModel/provider/chat_provider.dart';
 
 class MessageInput extends StatelessWidget {
-  MessageInput({super.key});
+  MessageInput({
+    super.key,
+    required this.chatRoomId,
+    required this.sendBy,
+  });
+  final String chatRoomId, sendBy;
   final TextEditingController messageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -18,9 +25,9 @@ class MessageInput extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               height: 55,
               width: 310,
-              decoration: const BoxDecoration(
-                color: Color(0XFFFDFCFF),
-                borderRadius: BorderRadius.all(Radius.circular(10)),
+              decoration: BoxDecoration(
+                color: const Color(0XFFFDFCFF),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: TextField(
                 controller: messageController,
@@ -44,7 +51,11 @@ class MessageInput extends StatelessWidget {
             radius: 21,
             backgroundColor: Palate.primaryColor,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Provider.of<ChatProvider>(context, listen: false).onSendMessage(
+                    chatRoomId, sendBy, messageController.text.toString());
+                messageController.clear();
+              },
               child: const Icon(
                 Icons.send,
                 color: Colors.white,
