@@ -20,6 +20,9 @@ class MessageInput extends StatelessWidget {
         children: [
           Material(
             elevation: 1.5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -27,7 +30,7 @@ class MessageInput extends StatelessWidget {
               width: 310,
               decoration: BoxDecoration(
                 color: const Color(0XFFFDFCFF),
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: TextField(
                 controller: messageController,

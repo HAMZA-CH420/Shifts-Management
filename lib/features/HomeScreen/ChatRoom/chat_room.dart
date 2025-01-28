@@ -18,7 +18,7 @@ class ChatRoom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(context, userMap['username']),
+      appBar: appBar(context, userMap['username'], userMap['status']),
       resizeToAvoidBottomInset: true, // Enable resizing
       body: Column(
         children: [

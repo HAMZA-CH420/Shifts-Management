@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_SearchBar.dart';
 import 'package:shifts_management/features/HomeScreen/chat/all_chats_screen.dart';
 import 'package:shifts_management/features/HomeScreen/group/all_groups_screen.dart';
+import 'package:shifts_management/features/HomeScreen/viewModel/provider/chat_provider.dart';
 import 'package:shifts_management/features/Model/Notification%20Services/Notification_Services.dart';
 
 class ChatHomeScreen extends StatefulWidget {
@@ -13,7 +15,25 @@ class ChatHomeScreen extends StatefulWidget {
   State<ChatHomeScreen> createState() => _ChatHomeScreenState();
 }
 
-class _ChatHomeScreenState extends State<ChatHomeScreen> {
+class _ChatHomeScreenState extends State<ChatHomeScreen>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      context.read<ChatProvider>().updateUserStatus("online");
+    }
+    if (state == AppLifecycleState.detached) {
+      context.read<ChatProvider>().updateUserStatus("offline");
+    }
+    super.didChangeAppLifecycleState(state);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -78,9 +98,9 @@ class _ChatHomeScreenState extends State<ChatHomeScreen> {
               ),
             ),
           ),
-          body: TabBarView(children: [
+          body: const TabBarView(children: [
             AllChatsScreen(),
-            const AllGroupsScreen(),
+            AllGroupsScreen(),
           ]),
         ),
       ),

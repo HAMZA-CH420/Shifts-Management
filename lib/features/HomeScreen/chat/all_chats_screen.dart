@@ -90,7 +90,13 @@ class _AllChatsScreenState extends State<AllChatsScreen> {
                           color: Palate.shiftTextColorSecondary,
                         ),
                       ),
-                      trailing: const Text("10:00 AM"),
+                      trailing: Text(
+                        otherUserData['status'],
+                        style: TextStyle(
+                            color: otherUserData["status"] == 'online'
+                                ? Colors.green
+                                : Colors.grey),
+                      ),
                     );
                   },
                 ),

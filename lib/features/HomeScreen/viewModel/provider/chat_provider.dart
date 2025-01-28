@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 
 class ChatProvider extends ChangeNotifier {
+  FirebaseFirestore fireStore = FirebaseFirestore.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
   // Constants
   static const String _usersCollection = "users";
 
@@ -33,9 +36,8 @@ class ChatProvider extends ChangeNotifier {
   Map<String, dynamic> userMapList = {};
   Future<void> fetchUsers() async {
     try {
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
       QuerySnapshot querySnapshot =
-          await firestore.collection(_usersCollection).get();
+          await fireStore.collection(_usersCollection).get();
       userMapList = Map.fromEntries(
           querySnapshot.docs.map((doc) => MapEntry(doc.id, doc.data())));
       notifyListeners();
@@ -52,14 +54,13 @@ class ChatProvider extends ChangeNotifier {
     String msg,
   ) async {
     if (msg.isNotEmpty) {
-      FirebaseFirestore firestore = FirebaseFirestore.instance;
       Map<String, dynamic> message = {
         "sendBy": sendBy,
         "message": msg,
         "time": FieldValue.serverTimestamp(),
       };
       try {
-        await firestore
+        await fireStore
             .collection('chatroom')
             .doc(chatRoomId)
             .collection('chats')
@@ -70,5 +71,13 @@ class ChatProvider extends ChangeNotifier {
     } else {
       debugPrint("Message is empty");
     }
+  }
+
+  /// Methode to update users Status
+  void updateUserStatus(String status) async {
+    await fireStore
+        .collection(_usersCollection)
+        .doc(auth.currentUser?.uid)
+        .update({'status': status});
   }
 }
