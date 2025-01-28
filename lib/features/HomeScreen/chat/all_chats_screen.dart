@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,19 +16,16 @@ class AllChatsScreen extends StatefulWidget {
 
 class _AllChatsScreenState extends State<AllChatsScreen> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  late Future<void> _fetchUsersFuture;
-
   @override
   void initState() {
     super.initState();
-    _fetchUsersFuture =
-        Provider.of<ChatProvider>(context, listen: false).fetchUsers();
+    Provider.of<ChatProvider>(context, listen: false).fetchUsers();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: _fetchUsersFuture,
+    return StreamBuilder(
+      stream: FirebaseFirestore.instance.collection('users').doc().snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
