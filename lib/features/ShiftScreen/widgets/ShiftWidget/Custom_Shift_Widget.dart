@@ -57,13 +57,10 @@ class CustomShiftWidget extends StatelessWidget {
                         location: location,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        spacing: 70,
                         children: [
                           TypeOfShift(
                             category: category,
-                          ),
-                          const SizedBox(
-                            width: 80,
                           ),
                           StatusOfShift(
                             status: status,

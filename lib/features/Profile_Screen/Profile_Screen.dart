@@ -27,10 +27,9 @@ class ProfileScreen extends StatelessWidget {
           "Profile",
           style: TextStyle(fontSize: 22),
         ),
-        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Center(
             child: SingleChildScrollView(
           child: Column(

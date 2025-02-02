@@ -14,12 +14,15 @@ class TypeOfShift extends StatelessWidget {
           AssetImage("assets/icons/Type.png"),
           color: Palate.primaryColor,
         )),
-        Text(
-          category,
-          style: const TextStyle(
-              color: Palate.shiftTextColorSecondary,
-              fontSize: 13,
-              fontWeight: FontWeight.w400),
+        SizedBox(
+          width: 58,
+          child: Text(
+            category,
+            style: const TextStyle(
+                color: Palate.shiftTextColorSecondary,
+                fontSize: 13,
+                fontWeight: FontWeight.w400),
+          ),
         )
       ],
     );

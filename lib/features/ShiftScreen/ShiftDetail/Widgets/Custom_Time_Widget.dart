@@ -6,12 +6,13 @@ class CustomTimeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           height: 70,
-          width: 170,
+          width: size.width / 2.3,
           decoration: BoxDecoration(
               color: Palate.navBarColor,
               borderRadius: BorderRadius.circular(10)),
@@ -36,7 +37,7 @@ class CustomTimeWidget extends StatelessWidget {
         ),
         Container(
           height: 70,
-          width: 170,
+          width: size.width / 2.3,
           decoration: BoxDecoration(
               color: Palate.navBarColor,
               borderRadius: BorderRadius.circular(10)),

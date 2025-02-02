@@ -61,7 +61,7 @@ class AuthenticationServices {
           "username": username,
           "email": email,
           "uid": auth.currentUser!.uid,
-          "status": "unavailable"
+          "status": ""
         });
         Fluttertoast.showToast(
           msg: "User Created Successfully.",

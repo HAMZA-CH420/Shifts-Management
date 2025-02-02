@@ -7,7 +7,7 @@ class StatusOfShift extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 30,
-      width: 95,
+      width: 77,
       decoration: BoxDecoration(
         color: const Color(0XFF15DA00),
         borderRadius: BorderRadius.circular(5),
@@ -17,7 +17,7 @@ class StatusOfShift extends StatelessWidget {
           status,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 13,
+            fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
         ),

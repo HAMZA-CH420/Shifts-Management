@@ -20,39 +20,44 @@ class ChatRoom extends StatelessWidget {
     return Scaffold(
       appBar: appBar(context, userMap['username'], userMap['status']),
       resizeToAvoidBottomInset: true, // Enable resizing
-      body: Column(
-        children: [
-          Expanded(
-            child: StreamBuilder(
-              stream: firestore
-                  .collection("chatroom")
-                  .doc(chatRoomId)
-                  .collection("chats")
-                  .orderBy('time', descending: true)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
+      body: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: StreamBuilder(
+                stream: firestore
+                    .collection("chatroom")
+                    .doc(chatRoomId)
+                    .collection("chats")
+                    .orderBy('time', descending: true)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return ListView.builder(
+                    reverse: true,
+                    itemCount: snapshot.data?.docs.length,
+                    itemBuilder: (context, index) {
+                      Map<String, dynamic> map =
+                          snapshot.data!.docs[index].data();
+                      return messages(map);
+                    },
                   );
-                }
-                return ListView.builder(
-                  reverse: true,
-                  itemCount: snapshot.data?.docs.length,
-                  itemBuilder: (context, index) {
-                    Map<String, dynamic> map =
-                        snapshot.data!.docs[index].data();
-                    return messages(map);
-                  },
-                );
-              },
+                },
+              ),
             ),
-          ),
-          MessageInput(
-            chatRoomId: chatRoomId,
-            sendBy: auth.currentUser!.displayName ?? 'X',
-          ),
-        ],
+            MessageInput(
+              chatRoomId: chatRoomId,
+              sendBy: auth.currentUser!.displayName ?? 'X',
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -73,7 +78,10 @@ class ChatRoom extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
         child: Text(
           map['message'],
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(
+              color: map['sendBy'] == auth.currentUser?.displayName
+                  ? Colors.white
+                  : Colors.black),
         ),
       ),
     );

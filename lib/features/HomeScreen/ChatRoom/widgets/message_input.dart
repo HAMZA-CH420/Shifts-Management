@@ -11,8 +11,10 @@ class MessageInput extends StatelessWidget {
   });
   final String chatRoomId, sendBy;
   final TextEditingController messageController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
       child: Row(
@@ -26,8 +28,8 @@ class MessageInput extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 10),
-              height: 55,
-              width: 310,
+              height: size.height / 17,
+              width: size.width / 1.3,
               decoration: BoxDecoration(
                 color: const Color(0XFFFDFCFF),
                 borderRadius: BorderRadius.circular(20),
