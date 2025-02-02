@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
@@ -26,7 +27,10 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
     return Scaffold(
       backgroundColor: const Color(0xffF4F4F4),
       appBar: AppBar(
-        backgroundColor: const Color(0xffF4F4F4),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        scrolledUnderElevation: 0.0,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
         title: const Text("Shift"),
         centerTitle: true,
         leading: IconButton(
@@ -129,7 +133,7 @@ class _CreateShiftScreenState extends State<CreateShiftScreen> {
     // Check if the end time is before the start time (crossing midnight)
     if (endTime.isBefore(startTime)) {
       // Add 24 hours to the end time to account for the day rollover
-      endTime = endTime.add(Duration(days: 1));
+      endTime = endTime.add(const Duration(days: 1));
     }
 
     // Calculate the difference

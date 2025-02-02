@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
@@ -14,6 +15,10 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        scrolledUnderElevation: 0.0,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Iconsax.notification)),
           IconButton(

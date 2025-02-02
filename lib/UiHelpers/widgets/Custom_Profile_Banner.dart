@@ -40,7 +40,7 @@ class CustomProfileBanner extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
-                    width: 110,
+                    width: 115,
                     child: Text(
                       bannerTitle,
                       style: const TextStyle(
