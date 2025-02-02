@@ -24,31 +24,15 @@ class AuthenticationServices {
       var pref = await SharedPreferences.getInstance();
       pref.setBool("isLoggedIn", false);
     } on FirebaseAuthException {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          "Invalid username or password!",
-          style: TextStyle(fontSize: 17),
-        ),
-        showCloseIcon: true,
-        shape: RoundedRectangleBorder(),
-        backgroundColor: Colors.red,
-        duration: Duration(seconds: 1),
-        margin: EdgeInsets.all(20),
-        behavior: SnackBarBehavior.floating,
-      ));
+      Fluttertoast.showToast(
+          msg: "Invalid username or password!",
+          textColor: Colors.white,
+          backgroundColor: Colors.red);
     } on SocketException {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text(
-          " No Internet Connection",
-          style: TextStyle(fontSize: 17),
-        ),
-        showCloseIcon: true,
-        shape: RoundedRectangleBorder(),
-        backgroundColor: Colors.red,
-        duration: Duration(seconds: 1),
-        margin: EdgeInsets.all(20),
-        behavior: SnackBarBehavior.floating,
-      ));
+      Fluttertoast.showToast(
+          msg: 'No Internet Connection!',
+          textColor: Colors.white,
+          backgroundColor: Colors.red);
     }
   }
 

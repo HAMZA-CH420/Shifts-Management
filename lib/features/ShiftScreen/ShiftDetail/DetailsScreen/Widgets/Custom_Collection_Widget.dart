@@ -17,7 +17,7 @@ class CustomCollectionWidget extends StatelessWidget {
           padding: const EdgeInsets.only(left: 14),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w600,
             ),
@@ -32,7 +32,7 @@ class CustomCollectionWidget extends StatelessWidget {
             )),
             Text(
               time,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Palate.TextFieldTextColor,
                 fontSize: 15,
               ),

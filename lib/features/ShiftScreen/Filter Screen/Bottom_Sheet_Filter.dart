@@ -25,7 +25,7 @@ class BottomSheetFilter extends StatelessWidget {
             "Filters",
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24),
           ),
-          CustomSelectWidget(),
+          const CustomSelectWidget(),
           CustomFilterBanner(bannerTitle: "Status"),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -77,7 +77,7 @@ class BottomSheetFilter extends StatelessWidget {
             ),
           ),
           CustomFilterBanner(bannerTitle: "Date"),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomDateBox(

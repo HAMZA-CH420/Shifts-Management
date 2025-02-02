@@ -9,18 +9,18 @@ class CustomSelectWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: 20),
           alignment: Alignment.centerLeft,
           width: 290,
           height: 40,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),
               bottomLeft: Radius.circular(10),
             ),
             color: Palate.navBarColor,
           ),
-          child: Text(
+          child: const Text(
             "Select Person",
             style: TextStyle(
                 color: Palate.primaryColor,
@@ -31,14 +31,14 @@ class CustomSelectWidget extends StatelessWidget {
         Container(
           height: 40,
           width: 60,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: Palate.primaryColor,
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(10),
                   bottomRight: Radius.circular(10))),
           child: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_drop_down,
                 size: 30,
                 color: Colors.white,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 
 class StepperWidget extends StatefulWidget {
-  StepperWidget({super.key});
+  const StepperWidget({super.key});
 
   @override
   State<StepperWidget> createState() => _StepperWidgetState();
@@ -37,7 +37,7 @@ class _StepperWidgetState extends State<StepperWidget> {
       steps: [
         Step(
           isActive: _currentStep >= 0,
-          stepStyle: StepStyle(color: Palate.primaryColor),
+          stepStyle: const StepStyle(color: Palate.primaryColor),
           title: const Text(
             "Started Location",
             style: TextStyle(
@@ -58,7 +58,7 @@ class _StepperWidgetState extends State<StepperWidget> {
         ),
         Step(
             isActive: _currentStep >= 1,
-            stepStyle: StepStyle(color: Palate.primaryColor),
+            stepStyle: const StepStyle(color: Palate.primaryColor),
             title: const Text(
               "Started Work",
               style: TextStyle(
@@ -69,7 +69,7 @@ class _StepperWidgetState extends State<StepperWidget> {
             content: const Text("Break")),
         Step(
           isActive: _currentStep >= 2,
-          stepStyle: StepStyle(color: Palate.primaryColor),
+          stepStyle: const StepStyle(color: Palate.primaryColor),
           title: const Text(
             "Took a selfie and sent to admin",
             style: TextStyle(
@@ -90,7 +90,7 @@ class _StepperWidgetState extends State<StepperWidget> {
         ),
         Step(
             isActive: _currentStep >= 3,
-            stepStyle: StepStyle(color: Palate.primaryColor),
+            stepStyle: const StepStyle(color: Palate.primaryColor),
             title: const Text(
               "Took a meal break",
               style: TextStyle(
@@ -101,7 +101,7 @@ class _StepperWidgetState extends State<StepperWidget> {
             content: const Text("Meal Break")),
         Step(
             isActive: _currentStep >= 4,
-            stepStyle: StepStyle(color: Palate.primaryColor),
+            stepStyle: const StepStyle(color: Palate.primaryColor),
             title: const Text(
               "Started work again",
               style: TextStyle(
@@ -112,7 +112,7 @@ class _StepperWidgetState extends State<StepperWidget> {
             content: const Text("work")),
         Step(
             isActive: _currentStep >= 5,
-            stepStyle: StepStyle(color: Palate.primaryColor),
+            stepStyle: const StepStyle(color: Palate.primaryColor),
             title: const Text(
               "Take a selfie and send to admin",
               style: TextStyle(
@@ -123,7 +123,7 @@ class _StepperWidgetState extends State<StepperWidget> {
             content: const Text("selfie")),
         Step(
             isActive: _currentStep >= 6,
-            stepStyle: StepStyle(color: Palate.primaryColor),
+            stepStyle: const StepStyle(color: Palate.primaryColor),
             title: const Text(
               "Started Work",
               style: TextStyle(

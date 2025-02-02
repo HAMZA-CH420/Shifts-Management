@@ -64,7 +64,9 @@ class ChatRoom extends StatelessWidget {
           : Alignment.centerLeft,
       child: Container(
         decoration: BoxDecoration(
-          color: Palate.primaryColor,
+          color: map['sendBy'] == auth.currentUser?.displayName
+              ? Palate.primaryColor
+              : Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),

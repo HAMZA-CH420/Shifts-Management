@@ -31,6 +31,9 @@ class _ChatHomeScreenState extends State<ChatHomeScreen>
     if (state == AppLifecycleState.detached) {
       context.read<ChatProvider>().updateUserStatus("Offline");
     }
+    if (state == AppLifecycleState.inactive) {
+      context.read<ChatProvider>().updateUserStatus("Offline");
+    }
     super.didChangeAppLifecycleState(state);
   }
 
