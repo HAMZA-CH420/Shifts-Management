@@ -1,4 +1,5 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
 
 class NotificationServices {
   FirebaseMessaging message = FirebaseMessaging.instance;
@@ -16,12 +17,12 @@ class NotificationServices {
       sound: true,
     );
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print("Permission Granted by user");
+      debugPrint("Permission Granted by user");
     } else if (settings.authorizationStatus ==
         AuthorizationStatus.provisional) {
-      print("User granted provisional permission");
+      debugPrint("User granted provisional permission");
     } else {
-      print("Permission denied by user");
+      debugPrint("Permission denied by user");
     }
   }
 }

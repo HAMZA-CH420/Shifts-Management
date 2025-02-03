@@ -81,7 +81,7 @@ class ChatRoom extends StatelessWidget {
           style: TextStyle(
               color: map['sendBy'] == auth.currentUser?.displayName
                   ? Colors.white
-                  : Colors.black),
+                  : Palate.shiftTextColor),
         ),
       ),
     );
