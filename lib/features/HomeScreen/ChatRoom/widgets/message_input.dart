@@ -26,6 +26,9 @@ class MessageInput extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
             child: Container(
+              constraints: const BoxConstraints(
+                maxHeight: 150,
+              ),
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               height: size.height / 17,
@@ -36,6 +39,8 @@ class MessageInput extends StatelessWidget {
               ),
               child: TextField(
                 controller: messageController,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
                 decoration: const InputDecoration(
                   prefixIcon: Icon(
                     Icons.add_circle_outlined,
