@@ -48,7 +48,8 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
         Navigator.pushReplacement(
             context,
             PageTransition(
-                child: IntroScreensItems(), type: PageTransitionType.fade));
+                child: const IntroScreensItems(),
+                type: PageTransitionType.fade));
       } else {
         Navigator.pushReplacement(
             context,
@@ -62,12 +63,12 @@ class _SecondSplashScreenState extends State<SecondSplashScreen> {
                     if (snapshot.data != null) {
                       return const BottomNavbar();
                     } else {
-                      return LoginScreen();
+                      return const LoginScreen();
                     }
                   },
                 ),
                 type: PageTransitionType.fade,
-                duration: Duration(milliseconds: 200)));
+                duration: const Duration(milliseconds: 200)));
       }
     });
   }
