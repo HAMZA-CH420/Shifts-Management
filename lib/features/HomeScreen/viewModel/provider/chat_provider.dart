@@ -9,12 +9,6 @@ class ChatProvider extends ChangeNotifier {
   static const String _usersCollection = "users";
 
   // Method to Create and Get Chat Room ids
-  /// Generates a unique chat room ID based on two user IDs.
-  ///
-  /// The chat room ID is created by concatenating the two user IDs in
-  /// lexicographical order to ensure consistency.
-  ///
-  /// Returns an empty string if either user ID is null or empty.
   String chatRoomId(String? user1, String? user2) {
     if (user1 != null &&
         user2 != null &&
