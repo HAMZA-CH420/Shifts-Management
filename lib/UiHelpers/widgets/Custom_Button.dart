@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 370,
       height: 50,
       child: ElevatedButton(
@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
   }
 
   Widget outlinedBtn() {
-    return Container(
+    return SizedBox(
       height: 50,
       width: 370,
       child: ElevatedButton(
