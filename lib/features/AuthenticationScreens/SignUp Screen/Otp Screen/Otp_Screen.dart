@@ -7,9 +7,9 @@ import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/features/Edit%20Profile%20Screen/Edit_Profile_Screen.dart';
 
 class OtpScreen extends StatefulWidget {
-  OtpScreen(
+  const OtpScreen(
       {super.key, this.value = "03001234567", required this.verificationId});
-  String verificationId;
+  final String verificationId;
   final String value;
 
   @override
