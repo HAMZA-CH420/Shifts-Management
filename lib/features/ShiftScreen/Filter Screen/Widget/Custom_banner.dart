@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomFilterBanner extends StatelessWidget {
-  CustomFilterBanner({super.key, required this.bannerTitle});
+  const CustomFilterBanner({super.key, required this.bannerTitle});
   final String bannerTitle;
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class CustomFilterBanner extends StatelessWidget {
         children: [
           Text(
             bannerTitle,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 22,
             ),
