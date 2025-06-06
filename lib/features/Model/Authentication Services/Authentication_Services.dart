@@ -21,6 +21,7 @@ class AuthenticationServices {
         email: email,
         password: password,
       );
+      debugPrint(userCredentials.toString());
       var pref = await SharedPreferences.getInstance();
       pref.setBool("isLoggedIn", false);
     } on FirebaseAuthException {
