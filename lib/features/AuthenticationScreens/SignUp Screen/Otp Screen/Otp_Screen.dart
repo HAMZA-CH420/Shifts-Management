@@ -112,7 +112,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           btnColor: Palate.primaryColor,
                           onTap: () async {
                             PhoneAuthCredential credentials =
-                                await PhoneAuthProvider.credential(
+                                PhoneAuthProvider.credential(
                                     verificationId: widget.verificationId,
                                     smsCode: otpController.text.toString());
                             FirebaseAuth.instance
@@ -121,7 +121,7 @@ class _OtpScreenState extends State<OtpScreen> {
                               Navigator.push(
                                   context,
                                   PageTransition(
-                                      child: EditProfileScreen(),
+                                      child: const EditProfileScreen(),
                                       type: PageTransitionType.bottomToTop));
                             });
                           },
