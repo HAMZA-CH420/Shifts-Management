@@ -6,12 +6,19 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/UiHelpers/widgets/Custom_Button.dart';
 import 'package:shifts_management/features/Edit%20Profile%20Screen/Edit_Profile_Screen.dart';
 
-class OtpScreen extends StatelessWidget {
+class OtpScreen extends StatefulWidget {
   OtpScreen(
       {super.key, this.value = "03001234567", required this.verificationId});
   String verificationId;
   final String value;
+
+  @override
+  State<OtpScreen> createState() => _OtpScreenState();
+}
+
+class _OtpScreenState extends State<OtpScreen> {
   TextEditingController otpController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +83,7 @@ class OtpScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Enter 4-digit verification code we just sent on ${value}",
+                          "Enter 4-digit verification code we just sent on ${widget.value}",
                         ),
                         Center(
                           child: Container(
@@ -106,7 +113,7 @@ class OtpScreen extends StatelessWidget {
                           onTap: () async {
                             PhoneAuthCredential credentials =
                                 await PhoneAuthProvider.credential(
-                                    verificationId: verificationId,
+                                    verificationId: widget.verificationId,
                                     smsCode: otpController.text.toString());
                             FirebaseAuth.instance
                                 .signInWithCredential(credentials)
