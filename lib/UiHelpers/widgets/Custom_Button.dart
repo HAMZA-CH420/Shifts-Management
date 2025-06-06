@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onTap,
         child: Text(
           btnName,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.w500),
         ),
       ),
@@ -45,7 +45,8 @@ class CustomButton extends StatelessWidget {
             shadowColor: Colors.transparent,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5),
-                side: BorderSide(color: Palate.primaryColor, width: 1.5))),
+                side:
+                    const BorderSide(color: Palate.primaryColor, width: 1.5))),
         onPressed: onTap,
         child: btnname,
       ),
