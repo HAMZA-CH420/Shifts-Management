@@ -3,7 +3,7 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/widgets/ShiftWidget/Custom_Shift_Icon.dart';
 
 class CustomCollectionWidget extends StatelessWidget {
-  CustomCollectionWidget(
+  const CustomCollectionWidget(
       {super.key, required this.title, required this.icon, required this.time});
   final String title, time;
   final IconData icon;
