@@ -19,8 +19,8 @@ class CustomButtonShift extends StatelessWidget {
         shadowColor: Colors.transparent,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
-            side: BorderSide(color: Palate.primaryColor)),
-        fixedSize: Size(370, 50),
+            side: const BorderSide(color: Palate.primaryColor)),
+        fixedSize: const Size(370, 50),
         backgroundColor: bgColor,
       ),
       onPressed: onTap,
