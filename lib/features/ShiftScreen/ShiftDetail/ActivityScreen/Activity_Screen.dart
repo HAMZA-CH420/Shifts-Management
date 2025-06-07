@@ -19,7 +19,7 @@ class ActivityScreen extends StatelessWidget {
           bgColor: Palate.primaryColor,
         ),
       ),
-      body: StepperWidget(),
+      body: const StepperWidget(),
     );
   }
 }
