@@ -50,7 +50,7 @@ class DetailsScreen extends StatelessWidget {
                   icon: Icons.calendar_month_sharp,
                   time: date,
                 ),
-                CustomCollectionWidget(
+                const CustomCollectionWidget(
                   title: "Break",
                   icon: Icons.watch_later,
                   time: "30 min",
