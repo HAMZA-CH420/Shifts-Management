@@ -31,7 +31,7 @@ class _AddLocationState extends State<AddLocation> {
           decoration: const InputDecoration(
             hintText: "Add Location",
             hintStyle: TextStyle(
-                color: Palate.TextFieldTextColor,
+                color: Palate.textFieldTextColor,
                 fontSize: 15,
                 fontWeight: FontWeight.w400),
             suffixIcon: Icon(

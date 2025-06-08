@@ -33,7 +33,7 @@ class CustomCollectionWidget extends StatelessWidget {
             Text(
               time,
               style: const TextStyle(
-                color: Palate.TextFieldTextColor,
+                color: Palate.textFieldTextColor,
                 fontSize: 15,
               ),
             )

@@ -56,7 +56,7 @@ class _ChatHomeScreenState extends State<ChatHomeScreen>
                 child: const Icon(
                   Iconsax.notification,
                   size: 25,
-                  color: Palate.PrimaryTextColor,
+                  color: Palate.primaryTextColor,
                 ),
               ),
               const SizedBox(
@@ -68,7 +68,7 @@ class _ChatHomeScreenState extends State<ChatHomeScreen>
               style: TextStyle(
                   fontSize: 28,
                   fontFamily: "medium",
-                  color: Palate.PrimaryTextColor),
+                  color: Palate.primaryTextColor),
             ),
             bottom: const PreferredSize(
               preferredSize: Size.fromHeight(100),
@@ -84,7 +84,7 @@ class _ChatHomeScreenState extends State<ChatHomeScreen>
                   TabBar(
                       padding: EdgeInsets.symmetric(horizontal: 40),
                       labelColor: Palate.primaryColor,
-                      unselectedLabelColor: Palate.TextFieldTextColor,
+                      unselectedLabelColor: Palate.textFieldTextColor,
                       overlayColor: WidgetStateColor.transparent,
                       indicatorSize: TabBarIndicatorSize.tab,
                       dividerHeight: 2,

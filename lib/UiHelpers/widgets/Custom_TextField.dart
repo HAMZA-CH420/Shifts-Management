@@ -29,7 +29,7 @@ class CustomTextfield extends StatelessWidget {
             controller: controller,
             obscureText: isHidden,
             style: const TextStyle(
-                color: Palate.TextFieldTextColor,
+                color: Palate.textFieldTextColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w400),
             decoration: InputDecoration(
