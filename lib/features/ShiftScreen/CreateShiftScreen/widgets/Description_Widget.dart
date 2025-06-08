@@ -4,7 +4,7 @@ import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
 class DescriptionWidget extends StatefulWidget {
-  DescriptionWidget({super.key});
+  const DescriptionWidget({super.key});
 
   @override
   State<DescriptionWidget> createState() => _DescriptionWidgetState();
