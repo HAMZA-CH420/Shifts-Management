@@ -51,7 +51,7 @@ class ShiftsScreen extends StatelessWidget {
                 TabBar(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     labelColor: Palate.primaryColor,
-                    unselectedLabelColor: Palate.TextFieldTextColor,
+                    unselectedLabelColor: Palate.textFieldTextColor,
                     overlayColor: WidgetStateColor.transparent,
                     indicatorSize: TabBarIndicatorSize.tab,
                     dividerHeight: 2,

@@ -29,7 +29,7 @@ class CustomDateBox extends StatelessWidget {
             Text(
               value,
               style: const TextStyle(
-                color: Palate.TextFieldTextColor,
+                color: Palate.textFieldTextColor,
                 fontSize: 15,
               ),
             )
