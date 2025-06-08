@@ -3,9 +3,16 @@ import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
-class DescriptionWidget extends StatelessWidget {
+class DescriptionWidget extends StatefulWidget {
   DescriptionWidget({super.key});
+
+  @override
+  State<DescriptionWidget> createState() => _DescriptionWidgetState();
+}
+
+class _DescriptionWidgetState extends State<DescriptionWidget> {
   TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Material(
