@@ -43,10 +43,10 @@ class _CustomSearchbarState extends State<CustomSearchbar> {
             decoration: const InputDecoration(
               prefixIcon: Icon(
                 Icons.search_outlined,
-                color: Palate.PrimaryTextColor,
+                color: Palate.primaryTextColor,
               ),
               hintText: "Search...",
-              hintStyle: TextStyle(color: Palate.PrimaryTextColor),
+              hintStyle: TextStyle(color: Palate.primaryTextColor),
               border: InputBorder.none,
             ),
             onChanged: (value) {
