@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomBanner extends StatelessWidget {
-  CustomBanner({super.key, required this.bannerTitle});
+  const CustomBanner({super.key, required this.bannerTitle});
   final String bannerTitle;
   @override
   Widget build(BuildContext context) {
