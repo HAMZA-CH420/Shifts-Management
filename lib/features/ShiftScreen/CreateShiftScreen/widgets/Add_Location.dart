@@ -3,8 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:shifts_management/UiHelpers/theme/Color_Palate.dart';
 import 'package:shifts_management/features/ShiftScreen/provider/Shift_Provider.dart';
 
-class AddLocation extends StatelessWidget {
+class AddLocation extends StatefulWidget {
   AddLocation({super.key});
+
+  @override
+  State<AddLocation> createState() => _AddLocationState();
+}
+
+class _AddLocationState extends State<AddLocation> {
   TextEditingController controller = TextEditingController();
 
   @override
